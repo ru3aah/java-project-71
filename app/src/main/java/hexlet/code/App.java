@@ -37,30 +37,12 @@ class App implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         System.out.println("Hello world");
-
+        Map<String, String> json1 = readJsonFile(filepath1);
+        Map<String, String> json2 = readJsonFile(filepath2);
         return null;
     }
 
-
-    public static JsonData readJsonFile(String filepath) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return  mapper.readValue(Paths.get(filepath).toFile(), JsonData.class);
-    }
-
-    public static class JsonData {
-        public void setJsonData(Map<String, String> jsonData) {
-            this.jsonData = jsonData;
-        }
-
-        private Map<String, String> jsonData;
-
-
-        public Map<String, String> getJsonData() {
-            return jsonData;
-        }
-
-        public JsonData(Map<String, String> jsonData) {
-            this.jsonData = jsonData;
-        }
+    public static Map<String, String> readJsonFile(String filepath) throws IOException {
+        return new ObjectMapper().readValue(Paths.get(filepath).toFile(), Map.class);
     }
 }
