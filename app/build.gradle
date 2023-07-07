@@ -18,6 +18,10 @@ dependencies {
     implementation 'io.github.joht.alias:type-alias-jsonb-typereference:2.0.0'
     implementation 'io.github.joht.alias:type-alias-jsonb-typereference:2.0.0'
     implementation 'io.github.joht.alias:type-alias-jsonb-typereference:2.0.0'
+    implementation 'info.picocli:picocli:4.7.3'
+    implementation 'info.picocli:picocli:4.7.3'
+    implementation 'info.picocli:picocli:4.7.3'
+    implementation 'info.picocli:picocli:4.7.3'
     testImplementation platform('org.junit:junit-bom:5.9.2')
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
     implementation 'info.picocli:picocli:4.7.3'

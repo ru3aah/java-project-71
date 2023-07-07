@@ -1,24 +1,22 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.Map;
 import java.util.concurrent.Callable;
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "1.0",
         description = "Compares two configuration files and shows a difference.", showDefaultValues = true)
-
 class App implements Callable<Integer> {
     @Parameters(index = "0", paramLabel = "filepath1", description = "path to the first file")
     private String filepath1;
     @Parameters(index = "1", paramLabel = "filepath2", description = "path to the second file")
     private String filepath2;
-    @CommandLine.Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format",
+    @Option(names = {"-f", "--format"},
+            paramLabel = "format",
+            description = "output format: stylish, plain, json, no-format [default: ${DEFAULT-VALUE}]",
             defaultValue = "stylish")
     private String format;
 
@@ -37,12 +35,7 @@ class App implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         System.out.println("Hello world");
-        Map<String, String> json1 = readJsonFile(filepath1);
-        Map<String, String> json2 = readJsonFile(filepath2);
+        System.out.println(Differ.generate(filepath1, filepath2, format));
         return null;
-    }
-
-    public static Map<String, String> readJsonFile(String filepath) throws IOException {
-        return new ObjectMapper().readValue(Paths.get(filepath).toFile(), Map.class);
     }
 }
