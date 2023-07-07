@@ -1,5 +1,7 @@
 package hexlet.code;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
@@ -45,35 +47,38 @@ public class Differ {
     }
 
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
-        TreeMap<String, Object> json1 = (TreeMap<String, Object>) parser(filepath1);
-        TreeMap<String, Object> json2 = (TreeMap<String, Object>) parser(filepath2);
+        Map<String, Object> json1 = parser(filepath1);
+        Map<String, Object> json2 = parser(filepath2);
         SortedSet<String> keySet = new TreeSet<>();
+        System.out.println();
+        System.out.println(json1);
+        System.out.println();
+        System.out.println(json2);
+        System.out.println();
         json1.forEach((key, value) -> keySet.add(key));
         json2.forEach((key, value) -> keySet.add(key));
-        List<Result> resultList = new ArrayList<>();
+        System.out.println(keySet);
+        System.out.println();
+        List<String> resultList = new ArrayList<>();
         for (String key : keySet) {
-            Result result = new Result();
+            StringBuilder result = new StringBuilder();
             if (json1.containsKey(key) && json2.containsKey(key)){
-                if (json1.equals(json2)){
-                    result.setStatus("  ");
-                    result.setJson(json1);
-                    resultList.add(result);
+                if (json1.get(key).equals(json2.get(key))){
+                    result.append(" ").append(key).append(": ").append(json1.get(key));
+                    resultList.add(result.toString());
                 } else {
-                    result.setStatus("- ");
-                    result.setJson(json1);
-                    resultList.add(result);
-                    result.setStatus("+ ");
-                    result.setJson(json2);
-                    resultList.add(result);
+                    result.append("- ").append(key).append(": ").append(json1.get(key));
+                    resultList.add(result.toString());
+                    result = new StringBuilder();
+                    result.append("+ ").append(key).append(": ").append(json2.get(key));
+                    resultList.add(result.toString());
                 }
             } else if (json1.containsKey(key) && !json2.containsKey(key)) {
-                result.setStatus("- ");
-                result.setJson(json1);
-                resultList.add(result);
+                result.append("- ").append(key).append(": ").append(json1.get(key));
+                resultList.add(result.toString());
             } else if (!json1.containsKey(key) && json2.containsKey(key)) {
-                result.setStatus("+ ");
-                result.setJson(json2);
-                resultList.add(result);
+                result.append("+ ").append(key).append(": ").append(json2.get(key));
+                resultList.add(result.toString());
             }
         }
         return resultList.toString();
