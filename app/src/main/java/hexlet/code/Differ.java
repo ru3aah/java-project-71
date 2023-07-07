@@ -50,37 +50,42 @@ public class Differ {
         Map<String, Object> json1 = parser(filepath1);
         Map<String, Object> json2 = parser(filepath2);
         SortedSet<String> keySet = new TreeSet<>();
-        System.out.println();
+
+        /* System.out.println();
         System.out.println(json1);
         System.out.println();
         System.out.println(json2);
         System.out.println();
+        */
         json1.forEach((key, value) -> keySet.add(key));
         json2.forEach((key, value) -> keySet.add(key));
-        System.out.println(keySet);
+
+        /* System.out.println(keySet);
         System.out.println();
-        List<String> resultList = new ArrayList<>();
+         */
+        StringBuilder resultList = new StringBuilder();
+        resultList.append("{\n");
         for (String key : keySet) {
             StringBuilder result = new StringBuilder();
             if (json1.containsKey(key) && json2.containsKey(key)){
                 if (json1.get(key).equals(json2.get(key))){
-                    result.append(" ").append(key).append(": ").append(json1.get(key));
-                    resultList.add(result.toString());
+                    result.append("  ").append(key).append(": ").append(json1.get(key));
+                    resultList.append(result).append("\n");
                 } else {
                     result.append("- ").append(key).append(": ").append(json1.get(key));
-                    resultList.add(result.toString());
+                    resultList.append(result).append("\n");
                     result = new StringBuilder();
                     result.append("+ ").append(key).append(": ").append(json2.get(key));
-                    resultList.add(result.toString());
+                    resultList.append(result).append("\n");
                 }
             } else if (json1.containsKey(key) && !json2.containsKey(key)) {
                 result.append("- ").append(key).append(": ").append(json1.get(key));
-                resultList.add(result.toString());
+                resultList.append(result).append("\n");
             } else if (!json1.containsKey(key) && json2.containsKey(key)) {
                 result.append("+ ").append(key).append(": ").append(json2.get(key));
-                resultList.add(result.toString());
+                resultList.append(result).append("\n");
             }
         }
-        return resultList.toString();
+        return resultList.append("}").toString();
     }
 }
