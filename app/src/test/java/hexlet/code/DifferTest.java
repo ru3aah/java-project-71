@@ -21,8 +21,7 @@ class DifferTest {
         Map<String, Object> recievedMap1;
         try {
             recievedMap1 = Differ.parser(
-                    "/Users/papanda"
-                            + "/IdeaProjects/java-project-71/app/src/test"
+                    "/app/src/test"
                             + "/resources/testFile1.json");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -42,11 +41,9 @@ class DifferTest {
                 + "}";
         String recieved;
         try {
-            recieved = Differ.generate("/Users/papanda/IdeaProjects"
-                            + "/java-project-71/app/src/test/resources"
+            recieved = Differ.generate("/app/src/test/resources"
                             + "/testFile1.json",
-                    "/Users/papanda/IdeaProjects/java-project-71/app"
-                            + "/src/test/resources/testFile2.json",
+                    "/app/src/test/resources/testFile2.json",
                     "format");
         } catch (Exception e) {
             throw new RuntimeException(e);
