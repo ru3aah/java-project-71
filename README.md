@@ -1,3 +1,4 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/ru3aah/java-project-71/workflows/hexlet-check/badge.svg)](https://github.com/ru3aah/java-project-71/actions)
-![Java CI](https://github.com/ru3aah/java-project-71/workflows/Java%20CI/badge.svg)
+<a href="https://codeclimate.com/github/ru3aah/java-project-71/maintainability"><img src="https://api.codeclimate.com/v1/badges/d141c384796ad6597f68/maintainability" /></a>
+<a href="https://codeclimate.com/github/ru3aah/java-project-71/test_coverage"><img src="https://api.codeclimate.com/v1/badges/d141c384796ad6597f68/test_coverage" /></a>
