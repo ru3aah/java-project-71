@@ -37,28 +37,53 @@ public final class Differ {
             StringBuilder result = new StringBuilder();
             if (json1.containsKey(key) && json2.containsKey(key)) {
                 if (json1.get(key).equals(json2.get(key))) {
-                    result.append("  ").append(key).append(": ")
+                    result
+                            .append("  ")
+                            .append(key)
+                            .append(": ")
                             .append(json1.get(key));
-                    resultList.append(result).append("\n");
+                    resultList
+                            .append(result)
+                            .append("\n");
                 } else {
-                    result.append("- ").append(key).append(": ")
+                    result
+                            .append("- ")
+                            .append(key)
+                            .append(": ")
                             .append(json1.get(key));
-                    resultList.append(result).append("\n");
+                    resultList
+                            .append(result)
+                            .append("\n");
                     result = new StringBuilder();
-                    result.append("+ ").append(key).append(": ")
+                    result
+                            .append("+ ")
+                            .append(key)
+                            .append(": ")
                             .append(json2.get(key));
-                    resultList.append(result).append("\n");
+                    resultList
+                            .append(result)
+                            .append("\n");
                 }
             } else if (json1.containsKey(key) && !json2
                     .containsKey(key)) {
-                result.append("- ").append(key).append(": ")
+                result
+                        .append("- ")
+                        .append(key)
+                        .append(": ")
                         .append(json1.get(key));
-                resultList.append(result).append("\n");
+                resultList
+                        .append(result)
+                        .append("\n");
             } else if (!json1.containsKey(key) && json2
                     .containsKey(key)) {
-                result.append("+ ").append(key).append(": ")
+                result
+                        .append("+ ")
+                        .append(key)
+                        .append(": ")
                         .append(json2.get(key));
-                resultList.append(result).append("\n");
+                resultList
+                        .append(result)
+                        .append("\n");
             }
         }
         return resultList.append("}").toString();
