@@ -4,49 +4,28 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
-public class Differ {
+public final class Differ {
 
-    public static class Result {
-        String status;
-        Map<String, Object> json;
-
-        public Result(String status, Map<String, Object> json) {
-            this.status = status;
-            this.json = json;
-        }
-
-        public Result() {
-
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public Map<String, Object> getJson() {
-            return json;
-        }
-
-        public void setJson(Map<String, Object> json) {
-            this.json = json;
-        }
-
-        public String resultToString() {
-            return status + " " + json;
-        }
+    private Differ() {
+        throw new UnsupportedOperationException(
+                "This is a utility class and cannot be instantiated");
     }
 
-    public static Map<String, Object> parser(String filepath) throws IOException {
-        return new ObjectMapper().readValue(Paths.get(filepath).toFile(), Map.class);
+    static Map<String, Object> parser(final String filepath)
+            throws IOException {
+        final Map map = new ObjectMapper()
+                .readValue(Paths.get(filepath).toFile(), Map.class);
+        return map;
     }
 
-    public static String generate(String filepath1, String filepath2, String format) throws Exception {
+    static String generate(final String filepath1,
+                                  final String filepath2,
+                                  final String format)
+            throws Exception {
         Map<String, Object> json1 = parser(filepath1);
         Map<String, Object> json2 = parser(filepath2);
         SortedSet<String> keySet = new TreeSet<>();
@@ -67,22 +46,29 @@ public class Differ {
         resultList.append("{\n");
         for (String key : keySet) {
             StringBuilder result = new StringBuilder();
-            if (json1.containsKey(key) && json2.containsKey(key)){
-                if (json1.get(key).equals(json2.get(key))){
-                    result.append("  ").append(key).append(": ").append(json1.get(key));
+            if (json1.containsKey(key) && json2.containsKey(key)) {
+                if (json1.get(key).equals(json2.get(key))) {
+                    result.append("  ").append(key).append(": ")
+                            .append(json1.get(key));
                     resultList.append(result).append("\n");
                 } else {
-                    result.append("- ").append(key).append(": ").append(json1.get(key));
+                    result.append("- ").append(key).append(": ")
+                            .append(json1.get(key));
                     resultList.append(result).append("\n");
                     result = new StringBuilder();
-                    result.append("+ ").append(key).append(": ").append(json2.get(key));
+                    result.append("+ ").append(key).append(": ")
+                            .append(json2.get(key));
                     resultList.append(result).append("\n");
                 }
-            } else if (json1.containsKey(key) && !json2.containsKey(key)) {
-                result.append("- ").append(key).append(": ").append(json1.get(key));
+            } else if (json1.containsKey(key) && !json2
+                    .containsKey(key)) {
+                result.append("- ").append(key).append(": ")
+                        .append(json1.get(key));
                 resultList.append(result).append("\n");
-            } else if (!json1.containsKey(key) && json2.containsKey(key)) {
-                result.append("+ ").append(key).append(": ").append(json2.get(key));
+            } else if (!json1.containsKey(key) && json2
+                    .containsKey(key)) {
+                result.append("+ ").append(key).append(": ")
+                        .append(json2.get(key));
                 resultList.append(result).append("\n");
             }
         }

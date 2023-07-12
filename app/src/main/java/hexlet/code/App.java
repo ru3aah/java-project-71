@@ -8,20 +8,37 @@ import picocli.CommandLine.Parameters;
 import java.util.concurrent.Callable;
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "1.0",
-        description = "Compares two configuration files and shows a difference.", showDefaultValues = true)
+        description = "Compares two configuration "
+                + "files and shows a difference.",
+        showDefaultValues = true)
 class App implements Callable<Integer> {
-    @Parameters(index = "0", paramLabel = "filepath1", description = "path to the first file")
+    /**
+     * filepath1, filepath2 - files for matching
+     * optinal format - yet've no idea what it might be.
+     */
+    @Parameters (index = "0", paramLabel = "filepath1",
+            description = "path to the first file")
     private String filepath1;
-    @Parameters(index = "1", paramLabel = "filepath2", description = "path to the second file")
+    /**
+     * filepath1, filepath2 - files for matching
+     * optinal format - yet've no idea what it might be.
+     */
+    @Parameters (index = "1", paramLabel = "filepath2",
+            description = "path to the second file")
     private String filepath2;
-    @Option(names = {"-f", "--format"},
+    /**
+     * filepath1, filepath2 - files for matching
+     * optinal format - yet've no idea what it might be.
+     */
+    @Option (names = {"-f", "--format"},
             paramLabel = "format",
-            description = "output format: stylish, plain, json, no-format [default: ${DEFAULT-VALUE}]",
+            description = "output format: stylish, plain, json, "
+                    + "no-format [default: ${DEFAULT-VALUE}]",
             defaultValue = "stylish")
     private String format;
 
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
@@ -34,7 +51,7 @@ class App implements Callable<Integer> {
      */
     @Override
     public Integer call() throws Exception {
-        System.out.println("Hello world");
+        //System.out.println("Hello world");
         System.out.println(Differ.generate(filepath1, filepath2, format));
         return null;
     }
