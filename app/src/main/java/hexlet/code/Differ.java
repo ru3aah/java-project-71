@@ -28,6 +28,8 @@ public final class Differ {
             throws Exception {
         Map<String, Object> json1 = parser(filepath1);
         Map<String, Object> json2 = parser(filepath2);
+        //System.out.println(json1 + "\n");
+        //System.out.println(json2 + "\n");
         SortedSet<String> keySet = new TreeSet<>();
         json1.forEach((key, value) -> keySet.add(key));
         json2.forEach((key, value) -> keySet.add(key));
