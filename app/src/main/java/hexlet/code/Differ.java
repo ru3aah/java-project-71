@@ -29,19 +29,8 @@ public final class Differ {
         Map<String, Object> json1 = parser(filepath1);
         Map<String, Object> json2 = parser(filepath2);
         SortedSet<String> keySet = new TreeSet<>();
-
-        /* System.out.println();
-        System.out.println(json1);
-        System.out.println();
-        System.out.println(json2);
-        System.out.println();
-        */
         json1.forEach((key, value) -> keySet.add(key));
         json2.forEach((key, value) -> keySet.add(key));
-
-        /* System.out.println(keySet);
-        System.out.println();
-         */
         StringBuilder resultList = new StringBuilder();
         resultList.append("{\n");
         for (String key : keySet) {
