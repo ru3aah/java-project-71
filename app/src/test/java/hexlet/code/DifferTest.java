@@ -3,9 +3,13 @@ package hexlet.code;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
+import static java.nio.file.Files.lines;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -21,7 +25,7 @@ class DifferTest {
         Map<String, Object> recievedMap1;
         try {
             recievedMap1 = Differ.parser(
-                    "/app/src/test"
+                    "src/test"
                             + "/resources/testFile1.json");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -31,20 +35,25 @@ class DifferTest {
 
     @Test
     public void testGenerate() {
-        String expected = "{\n"
-                + "- follow: false\n"
-                + "  host: hexlet.io\n"
-                + "- proxy: 123.234.53.22\n"
-                + "- timeout: 1\n"
-                + "+ timeout: 20\n"
-                + "+ verbose: true\n"
-                + "}";
+        final String relatieTestPath = "src/test/resources/";
+        final String expectedPath = relatieTestPath + "testFileExpected.txt";
+        Path absoluteTestPath =
+                Paths.get(relatieTestPath).toAbsolutePath().normalize();
+        String expected;
+        try {
+            expected = lines(Paths.get(expectedPath)
+                    .toAbsolutePath().normalize())
+                    .collect(Collectors.joining(System.lineSeparator()));
+            //System.out.println("expected\n" + expected);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         String recieved;
         try {
-            recieved = Differ.generate("/app/src/test/resources"
-                            + "/testFile1.json",
-                    "/app/src/test/resources/testFile2.json",
-                    "format");
+            recieved = Differ.generate(absoluteTestPath
+                            .toString() + "/testFile1.json",
+                    absoluteTestPath.toString() + "/testFile2.json",
+                    "stylish");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

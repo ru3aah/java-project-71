@@ -3,6 +3,7 @@ package hexlet.code;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 import java.util.SortedSet;
@@ -17,8 +18,10 @@ public final class Differ {
 
     static Map<String, Object> parser(final String filepath)
             throws IOException {
+        Path absolutePath = Paths.get(filepath).toAbsolutePath().normalize();
         final Map map = new ObjectMapper()
-                .readValue(Paths.get(filepath).toFile(), Map.class);
+                .readValue(Paths.get(absolutePath.toString()).toFile(),
+                        Map.class);
         return map;
     }
 
