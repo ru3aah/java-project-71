@@ -37,7 +37,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 
     testImplementation (
-        'org.junit.jupiter:junit-jupiter:5.9.2'
+        'org.junit.jupiter:junit-jupiter:5.9.2',
         'org.slf4j:slf4j-log4j12:2.0.7',
         'org.assertj:assertj-core:3.22.0'
         )
@@ -53,9 +53,7 @@ test {
     useJUnitPlatform()
 }
 
-testlogger {
-    showStandardStreams true
-}
+
 
 jacocoTestReport {
     reports {
