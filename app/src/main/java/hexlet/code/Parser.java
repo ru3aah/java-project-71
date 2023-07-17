@@ -11,11 +11,7 @@ import java.nio.file.Paths;
 import java.util.Map;
 
 import static java.nio.file.Files.readString;
-
-public class Parser {
-    static String getExtention(final Path filepath) {
-        return FilenameUtils.getExtension(filepath.toFile().getName());
-    }
+class Parser {
     static Map<String, Object> parser(final String filepath)
             throws IOException {
         //System.out.println("incoming filepath " + filepath);
@@ -50,13 +46,13 @@ public class Parser {
         return map.readValue(readString(filepath),
                 new TypeReference<>() { });
     }
-
     static Map<String, Object> yamlToMap(final Path filepath)
             throws Exception {
         ObjectMapper map = new YAMLMapper();
         return map.readValue(readString(filepath),
                 new TypeReference<>() { });
     }
-
-
+    static String getExtention(final Path filepath) {
+        return FilenameUtils.getExtension(filepath.toFile().getName());
+    }
 }
