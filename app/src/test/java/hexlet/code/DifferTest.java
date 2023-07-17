@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 import static java.nio.file.Files.lines;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 class DifferTest {
 
     @Test
@@ -24,7 +23,7 @@ class DifferTest {
         expectedMap1.put("follow", false);
         Map<String, Object> recievedMap1;
         try {
-            recievedMap1 = Differ.parser(
+            recievedMap1 = Parser.parser(
                     "src/test"
                             + "/resources/testFile1.json");
         } catch (IOException e) {

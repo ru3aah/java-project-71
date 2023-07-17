@@ -1,10 +1,5 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -16,37 +11,28 @@ public final class Differ {
                 "This is a utility class and cannot be instantiated");
     }
 
-    static Map<String, Object> parser(final String filepath)
-            throws IOException {
-        Path absolutePath = Paths.get(filepath).toAbsolutePath().normalize();
-        final Map map = new ObjectMapper()
-                .readValue(Paths.get(absolutePath.toString()).toFile(),
-                        Map.class);
-        return map;
-    }
-
     static String generate(final String filepath1,
                                   final String filepath2,
                                   final String format)
             throws Exception {
-        Map<String, Object> json1 = parser(filepath1);
-        Map<String, Object> json2 = parser(filepath2);
-        //System.out.println(json1 + "\n");
-        //System.out.println(json2 + "\n");
+        Map<String, Object> file1 = Parser.parser(filepath1);
+        Map<String, Object> file2 = Parser.parser(filepath2);
+        System.out.println(file1 + "\n");
+        System.out.println(file2 + "\n");
         SortedSet<String> keySet = new TreeSet<>();
-        json1.forEach((key, value) -> keySet.add(key));
-        json2.forEach((key, value) -> keySet.add(key));
+        file1.forEach((key, value) -> keySet.add(key));
+        file2.forEach((key, value) -> keySet.add(key));
         StringBuilder resultList = new StringBuilder();
         resultList.append("{\n");
         for (String key : keySet) {
             StringBuilder result = new StringBuilder();
-            if (json1.containsKey(key) && json2.containsKey(key)) {
-                if (json1.get(key).equals(json2.get(key))) {
+            if (file1.containsKey(key) && file2.containsKey(key)) {
+                if (file1.get(key).equals(file2.get(key))) {
                     result
                             .append("  ")
                             .append(key)
                             .append(": ")
-                            .append(json1.get(key));
+                            .append(file1.get(key));
                     resultList
                             .append(result)
                             .append("\n");
@@ -55,7 +41,7 @@ public final class Differ {
                             .append("- ")
                             .append(key)
                             .append(": ")
-                            .append(json1.get(key));
+                            .append(file1.get(key));
                     resultList
                             .append(result)
                             .append("\n");
@@ -64,28 +50,28 @@ public final class Differ {
                             .append("+ ")
                             .append(key)
                             .append(": ")
-                            .append(json2.get(key));
+                            .append(file2.get(key));
                     resultList
                             .append(result)
                             .append("\n");
                 }
-            } else if (json1.containsKey(key) && !json2
+            } else if (file1.containsKey(key) && !file2
                     .containsKey(key)) {
                 result
                         .append("- ")
                         .append(key)
                         .append(": ")
-                        .append(json1.get(key));
+                        .append(file1.get(key));
                 resultList
                         .append(result)
                         .append("\n");
-            } else if (!json1.containsKey(key) && json2
+            } else if (!file1.containsKey(key) && file2
                     .containsKey(key)) {
                 result
                         .append("+ ")
                         .append(key)
                         .append(": ")
-                        .append(json2.get(key));
+                        .append(file2.get(key));
                 resultList
                         .append(result)
                         .append("\n");
