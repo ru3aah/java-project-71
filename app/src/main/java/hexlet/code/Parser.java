@@ -25,9 +25,9 @@ class Parser {
                 System.out.println("json file've been found");
                 map = jsonToMap(absolutePath);
             } catch (Exception e) {
-                 throw new RuntimeException(e);
-             }
-         } else if (getExtention(absolutePath).equals("yml")) {
+                throw new RuntimeException(e);
+            }
+        } else if (getExtention(absolutePath).equals("yml")) {
             try {
                 System.out.println("yaml file've been found");
                 map = yamlToMap(absolutePath);
