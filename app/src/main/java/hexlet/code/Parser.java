@@ -20,23 +20,23 @@ class Parser {
         Map<String, Object> map = null;
         System.out.println("Let's see what is " + absolutePath);
         System.out.println(getExtention(absolutePath));
-       if (getExtention(absolutePath).equals("json")) {
-           try {
-               System.out.println("json file've been found");
-               map = jsonToMap(absolutePath);
-           } catch (Exception e) {
-               throw new RuntimeException(e);
-           }
-       } else if (getExtention(absolutePath).equals("yml")) {
-           try {
-               System.out.println("yaml file've been found");
-               map = yamlToMap(absolutePath);
-           } catch (Exception e) {
-               throw new RuntimeException(e);
-           }
-       } else {
-           System.out.println("Can't detect what is that shit");
-       }
+        if (getExtention(absolutePath).equals("json")) {
+            try {
+                System.out.println("json file've been found");
+                map = jsonToMap(absolutePath);
+            } catch (Exception e) {
+                 throw new RuntimeException(e);
+             }
+         } else if (getExtention(absolutePath).equals("yml")) {
+            try {
+                System.out.println("yaml file've been found");
+                map = yamlToMap(absolutePath);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Can't detect what is that shit");
+        }
         return map;
     }
 
