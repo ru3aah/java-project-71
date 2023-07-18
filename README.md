@@ -4,4 +4,4 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d141c384796ad6597f68/test_coverage)](https://codeclimate.com/github/ru3aah/java-project-71/test_coverage)
 
 Asciinema for Yaml & Json 
-https://asciinema.org/connect/46773652-df1a-4a1f-8d26-b11c14c4f088
+[![asciicast](https://asciinema.org/a/7da0mvvrSbacShSvw5k4GibQc.svg)](https://asciinema.org/a/7da0mvvrSbacShSvw5k4GibQc)
