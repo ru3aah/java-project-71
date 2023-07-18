@@ -56,3 +56,4 @@ class Parser {
         return FilenameUtils.getExtension(filepath.toFile().getName());
     }
 }
+
