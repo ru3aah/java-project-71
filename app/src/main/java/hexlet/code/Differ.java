@@ -17,8 +17,8 @@ public final class Differ {
             throws Exception {
         Map<String, Object> file1 = Parser.parser(filepath1);
         Map<String, Object> file2 = Parser.parser(filepath2);
-        System.out.println(file1 + "\n");
-        System.out.println(file2 + "\n");
+        //System.out.println(file1 + "\n");
+        //System.out.println(file2 + "\n");
         SortedSet<String> keySet = new TreeSet<>();
         file1.forEach((key, value) -> keySet.add(key));
         file2.forEach((key, value) -> keySet.add(key));

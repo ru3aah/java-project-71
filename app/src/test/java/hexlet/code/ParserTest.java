@@ -36,7 +36,7 @@ public class ParserTest extends Assertions {
      * clear recievedMap from previouse test.
      */
     @BeforeEach
-    public void initrecievedMap() {
+    public void initRecievedMap() {
         recievedMap1.clear();
     }
 
@@ -46,13 +46,13 @@ public class ParserTest extends Assertions {
     @AfterAll
     public void wasteTestData() {
         expectedMap1.clear();
-        recievedMap1.clear();
     }
     /**
      * test for Json file parsing.
      */
     @Test
-    public void testParserJson() {
+    public void testJson() {
+        System.out.println("test Json parsing");
         try {
             recievedMap1 = Parser.parser(
                     "src/test"
@@ -66,11 +66,44 @@ public class ParserTest extends Assertions {
      * test for yaml file parsing.
      */
     @Test
-    public void testParserYaml() {
+    public void testYaml() {
+        System.out.println("test Yaml parsing");
         try {
             recievedMap1 = Parser.parser(
                     "src/test"
                             + "/resources/testFile1.yml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        assertEquals(expectedMap1, recievedMap1);
+    }
+
+    /**
+     * test for empty Yaml file parsing.
+     */
+    @Test
+    public void testEmptyYaml() {
+        System.out.println("test empty Yaml parsing");
+        try {
+            recievedMap1 = Parser.parser(
+                    "src/test"
+                            + "/resources/testEmpty.yml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        assertEquals(null, recievedMap1);
+    }
+    /**
+     * test for empty Json file parsing.
+     */
+    @Test
+    public void testEmptyJson() {
+        System.out.println("test empty Json parsing");
+        expectedMap1.clear();
+        try {
+            recievedMap1 = Parser.parser(
+                    "src/test"
+                            + "/resources/testEmpty.json");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
