@@ -29,7 +29,10 @@ dependencies {
     implementation 'io.github.joht.alias:type-alias-jsonb-typereference:2.0.0'
     
     implementation 'info.picocli:picocli:4.7.3'
-    
+    implementation 'com.tngtech.junit.dataprovider:junit-jupiter-dataprovider:2.10'
+    implementation 'com.tngtech.junit.dataprovider:junit-jupiter-dataprovider:2.10'
+    implementation 'com.tngtech.junit.dataprovider:junit-dataprovider-core:2.10'
+
     annotationProcessor 'info.picocli:picocli-codegen:4.7.3'
     
     testImplementation platform('org.junit:junit-bom:5.9.2')

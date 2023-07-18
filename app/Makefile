@@ -11,8 +11,11 @@ build:
 install:
 	./gradlew clean install
 
-run-dist: #start APP
+run-distJson: #start APP with json
 	./build/install/app/bin/app file1.json file2.json
+
+run-distYaml: #start APP with yml
+	./build/install/app/bin/app file1.yml file2.yml
 
 run:
 	./gradlew run
