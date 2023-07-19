@@ -6,4 +6,4 @@
 Asciinema for Yaml & Json 
 [![asciicast](https://asciinema.org/a/7da0mvvrSbacShSvw5k4GibQc.svg)](https://asciinema.org/a/7da0mvvrSbacShSvw5k4GibQc)
 Asciinema for Recursive Json
-[![asciicast](https://asciinema.org/a/14.png)](https://asciinema.org/a/14)
+[![asciicast](https://asciinema.org/a/uxxtJ6sbRAcXqPpAtJP6mkwPp.svg)](https://asciinema.org/a/uxxtJ6sbRAcXqPpAtJP6mkwPp)
