@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.nio.file.Files.lines;
-//import static java.nio.file.Files.writeString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DifferTest {
@@ -28,10 +27,6 @@ class DifferTest {
                 expected = stream.collect(Collectors
                         .joining(System.lineSeparator()));
             }
-            /*expected = lines(Paths.get(expectedPath)
-                    .toAbsolutePath().normalize())
-                    .collect(Collectors.joining(System.lineSeparator()));
-            */
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -63,10 +58,6 @@ class DifferTest {
                 expected = stream.collect(Collectors
                         .joining(System.lineSeparator()));
             }
-            /*expected = lines(Paths.get(expectedPath)
-                    .toAbsolutePath().normalize())
-                    .collect(Collectors.joining(System.lineSeparator()));
-            */
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
