@@ -28,10 +28,6 @@ class DifferTest {
                 expected = stream.collect(Collectors
                         .joining(System.lineSeparator()));
             }
-            /*expected = lines(Paths.get(expectedPath)
-                    .toAbsolutePath().normalize())
-                    .collect(Collectors.joining(System.lineSeparator()));
-            */
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -63,10 +59,6 @@ class DifferTest {
                 expected = stream.collect(Collectors
                         .joining(System.lineSeparator()));
             }
-            /*expected = lines(Paths.get(expectedPath)
-                    .toAbsolutePath().normalize())
-                    .collect(Collectors.joining(System.lineSeparator()));
-            */
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
