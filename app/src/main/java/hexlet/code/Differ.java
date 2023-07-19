@@ -1,6 +1,10 @@
 package hexlet.code;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -12,91 +16,38 @@ public final class Differ {
     }
 
     static String generate(final String filepath1,
-                                  final String filepath2,
-                                  final String format)
+                           final String filepath2,
+                           final String format)
             throws Exception {
-        Map<String, Object> file1 = Parser.parser(filepath1);
-        //System.out.println("file1");
-        //System.out.println(file1);
-        Map<String, Object> file2 = Parser.parser(filepath2);
-        //System.out.println("file2");
-        //System.out.println(file2);
-        //System.out.println(file1 + "\n");
-        //System.out.println(file2 + "\n");
-        SortedSet<String> keySet = new TreeSet<>();
-        file1.forEach((key, value) -> keySet.add(key));
-        file2.forEach((key, value) -> keySet.add(key));
-        //System.out.println("keyset");
-        //System.out.println(keySet);
-        StringBuilder resultList = new StringBuilder();
-        resultList.append("{\n");
+        Map<String, Object> fileData1 = Parser.parser(filepath1);
+        Map<String, Object> fileData2 = Parser.parser(filepath2);
+        List<Map<String, Object>> resultMap = new ArrayList<>();
+        SortedSet<String> keySet = new TreeSet<>(fileData1.keySet());
+        keySet.addAll(fileData2.keySet());
         for (String key : keySet) {
-            StringBuilder result = new StringBuilder();
-            //System.out.println(key);
-            if (file1.containsKey(key) && file2.containsKey(key)) {
-                var value1 = file1.get(key);
-                var value2 = file2.get(key);
-                if (value1 == null) {
-                    if (value2 == null) {
-                        result
-                                .append("  ")
-                                .append(key)
-                                .append(": ")
-                                .append(file1.get(key));
-                        resultList
-                                .append(result)
-                                .append("\n");
-                    }
-                } else if (value1.equals(value2)) {
-                    result
-                            .append("  ")
-                            .append(key)
-                            .append(": ")
-                            .append(file1.get(key));
-                    resultList
-                            .append(result)
-                            .append("\n");
-                } else {
-                    result
-                            .append("- ")
-                            .append(key)
-                            .append(": ")
-                            .append(file1.get(key));
-                    resultList
-                            .append(result)
-                            .append("\n");
-                    result = new StringBuilder();
-                    result
-                            .append("+ ")
-                            .append(key)
-                            .append(": ")
-                            .append(file2.get(key));
-                    resultList
-                            .append(result)
-                            .append("\n");
-                }
-            } else if (file1.containsKey(key) && !file2
-                    .containsKey(key)) {
-                result
-                        .append("- ")
-                        .append(key)
-                        .append(": ")
-                        .append(file1.get(key));
-                resultList
-                        .append(result)
-                        .append("\n");
-            } else if (!file1.containsKey(key) && file2
-                    .containsKey(key)) {
-                result
-                        .append("+ ")
-                        .append(key)
-                        .append(": ")
-                        .append(file2.get(key));
-                resultList
-                        .append(result)
-                        .append("\n");
+            Map<String, Object> resultElement = new LinkedHashMap<>();
+            if (fileData1.containsKey(key) && !fileData2.containsKey(key)) {
+                resultElement.put("key", key);
+                resultElement.put("oldValue", fileData1.get(key));
+                resultElement.put("status", "-");
+            } else if (!fileData1.containsKey(key)
+                    && fileData2.containsKey(key)) {
+                resultElement.put("key", key);
+                resultElement.put("newValue", fileData2.get(key));
+                resultElement.put("status", "+");
+            } else if (!Objects.equals(fileData1.get(key),
+                    fileData2.get(key))) {
+                resultElement.put("key", key);
+                resultElement.put("oldValue", fileData1.get(key));
+                resultElement.put("newValue", fileData2.get(key));
+                resultElement.put("status", "*");
+            } else {
+                resultElement.put("key", key);
+                resultElement.put("oldValue", fileData1.get(key));
+                resultElement.put("status", " ");
             }
+            resultMap.add(resultElement);
         }
-        return resultList.append("}").toString();
+        return Formater.format(resultMap, format);
     }
 }
