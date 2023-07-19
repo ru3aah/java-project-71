@@ -12,7 +12,7 @@ install:
 	./gradlew clean install
 
 run-distJson: #start APP with json
-	./build/install/app/bin/app file1.json file2.json
+	./build/install/app/bin/app file3.json file4.json
 
 run-distYaml: #start APP with yml
 	./build/install/app/bin/app file1.yml file2.yml

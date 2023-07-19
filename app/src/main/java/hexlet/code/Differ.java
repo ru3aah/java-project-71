@@ -16,18 +16,38 @@ public final class Differ {
                                   final String format)
             throws Exception {
         Map<String, Object> file1 = Parser.parser(filepath1);
+        //System.out.println("file1");
+        //System.out.println(file1);
         Map<String, Object> file2 = Parser.parser(filepath2);
+        //System.out.println("file2");
+        //System.out.println(file2);
         //System.out.println(file1 + "\n");
         //System.out.println(file2 + "\n");
         SortedSet<String> keySet = new TreeSet<>();
         file1.forEach((key, value) -> keySet.add(key));
         file2.forEach((key, value) -> keySet.add(key));
+        //System.out.println("keyset");
+        //System.out.println(keySet);
         StringBuilder resultList = new StringBuilder();
         resultList.append("{\n");
         for (String key : keySet) {
             StringBuilder result = new StringBuilder();
+            //System.out.println(key);
             if (file1.containsKey(key) && file2.containsKey(key)) {
-                if (file1.get(key).equals(file2.get(key))) {
+                var value1 = file1.get(key);
+                var value2 = file2.get(key);
+                if (value1 == null) {
+                    if (value2 == null) {
+                        result
+                                .append("  ")
+                                .append(key)
+                                .append(": ")
+                                .append(file1.get(key));
+                        resultList
+                                .append(result)
+                                .append("\n");
+                    }
+                } else if (value1.equals(value2)) {
                     result
                             .append("  ")
                             .append(key)
