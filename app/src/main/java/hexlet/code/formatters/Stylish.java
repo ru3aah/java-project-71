@@ -1,17 +1,10 @@
-package hexlet.code;
+package hexlet.code.formatters;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class Formater {
-    static String format(final List<Map<String, Object>> diffMap,
-                                 final String formatName) throws IOException {
-        switch (formatName) {
-            default : return stylish(diffMap);
-        }
-    }
-    static String stylish(final List<Map<String, Object>> diffMap) {
+public class Stylish {
+    public static String stylish(final List<Map<String, Object>> diffMap) {
         StringBuilder result = new StringBuilder("{\n");
         for (Map<String, Object> element : diffMap) {
             switch (element.get("status").toString()) {
@@ -33,6 +26,11 @@ public class Formater {
             }
         }
         result.append("}");
+        return result.toString();
+    }
+    public static String plain(final List<Map<String, Object>> difMap) {
+        StringBuilder result = new StringBuilder();
+        
         return result.toString();
     }
 }

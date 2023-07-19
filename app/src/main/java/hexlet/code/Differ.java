@@ -48,6 +48,6 @@ public final class Differ {
             }
             resultMap.add(resultElement);
         }
-        return Formater.format(resultMap, format);
+        return Formatter.format(resultMap, format);
     }
 }
