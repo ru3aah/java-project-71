@@ -5,7 +5,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * plain formatter.
+ */
 public class Plain {
+
     /**
      * plain formatter.
      * @param diffMap incoming Map.
@@ -29,7 +33,7 @@ public class Plain {
                         .append(complexValue(element.get("oldValue")))
                         .append(" to ").append(complexValue(element.get(
                                 "newValue"))).append("\n");
-                default -> result.append("");
+                default -> result.append(" ");
             }
         }
         return result.toString().trim();
@@ -40,7 +44,7 @@ public class Plain {
      * @param data incoming data
      * @return String
      */
-    public static String complexValue(final Object data) {
+    private static String complexValue(final Object data) {
         if (data instanceof Object[] || data instanceof Collections
                 || data instanceof Map || data instanceof ArrayList<?>) {
             return "[complex value]";
