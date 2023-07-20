@@ -33,7 +33,7 @@ public class Plain {
                         .append(complexValue(element.get("oldValue")))
                         .append(" to ").append(complexValue(element.get(
                                 "newValue"))).append("\n");
-                default -> result.append(" ");
+                default -> result.append("");
             }
         }
         return result.toString().trim();
@@ -54,5 +54,5 @@ public class Plain {
             return null;
         }
         return data.toString();
-        }
     }
+}
