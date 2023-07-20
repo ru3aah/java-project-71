@@ -16,6 +16,8 @@ run-distJson: #start APP with json
 
 run-distYaml: #start APP with yml
 	./build/install/app/bin/app file1.yml file2.yml
+run-distJsonPlain: #start APP with json and Plain result
+	./build/install/app/bin/app file3.json file4.json -f plain
 
 run:
 	./gradlew run

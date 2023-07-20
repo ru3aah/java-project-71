@@ -4,6 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Stylish {
+    /**
+     * stylish formatter.
+     *
+     * @param diffMap incoming Map
+     * @return formatted String
+     */
     public static String stylish(final List<Map<String, Object>> diffMap) {
         StringBuilder result = new StringBuilder("{\n");
         for (Map<String, Object> element : diffMap) {
@@ -26,11 +32,6 @@ public class Stylish {
             }
         }
         result.append("}");
-        return result.toString();
-    }
-    public static String plain(final List<Map<String, Object>> difMap) {
-        StringBuilder result = new StringBuilder();
-        
         return result.toString();
     }
 }
