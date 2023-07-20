@@ -50,7 +50,7 @@ public class Plain {
             return "[complex value]";
         } else if (data instanceof String) {
             return "'" + data + "'";
-        } else if (data == null) {
+        } else if (null == data) {
             return null;
         }
         return data.toString();
