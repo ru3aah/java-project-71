@@ -29,22 +29,22 @@ public final class Differ {
             if (fileData1.containsKey(key) && !fileData2.containsKey(key)) {
                 resultElement.put("key", key);
                 resultElement.put("oldValue", fileData1.get(key));
-                resultElement.put("status", "-");
+                resultElement.put("status", "removed");
             } else if (!fileData1.containsKey(key)
                     && fileData2.containsKey(key)) {
                 resultElement.put("key", key);
                 resultElement.put("newValue", fileData2.get(key));
-                resultElement.put("status", "+");
+                resultElement.put("status", "added");
             } else if (!Objects.equals(fileData1.get(key),
                     fileData2.get(key))) {
                 resultElement.put("key", key);
                 resultElement.put("oldValue", fileData1.get(key));
                 resultElement.put("newValue", fileData2.get(key));
-                resultElement.put("status", "*");
+                resultElement.put("status", "updated");
             } else {
                 resultElement.put("key", key);
                 resultElement.put("oldValue", fileData1.get(key));
-                resultElement.put("status", " ");
+                resultElement.put("status", "remain same");
             }
             resultMap.add(resultElement);
         }

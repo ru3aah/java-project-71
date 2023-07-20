@@ -14,13 +14,15 @@ public class Stylish {
         StringBuilder result = new StringBuilder("{\n");
         for (Map<String, Object> element : diffMap) {
             switch (element.get("status").toString()) {
-                case "-" -> result.append("  - ").append(element.get("key"))
+                case "removed" -> result.append("  - ").append(element.get(
+                        "key"))
                         .append(": ").append(element.get("oldValue")).append(
                                 "\n");
-                case "+" -> result.append("  + ").append(element.get("key"))
+                case "added" -> result.append("  + ").append(element.get("key"))
                         .append(": ").append(element.get("newValue")).append(
                                 "\n");
-                case " " -> result.append("    ").append(element.get("key"))
+                case "remain same" -> result.append("    ").append(element.get(
+                        "key"))
                         .append(": ").append(element.get("oldValue")).append(
                                 "\n");
                 default -> {

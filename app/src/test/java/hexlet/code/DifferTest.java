@@ -41,19 +41,27 @@ class DifferTest {
             .get("src/test/resources/testFileExpectedPlain.txt")
             .toAbsolutePath().normalize();
     /**
-     * expected result for two recursive jsons formatted stylish.
+     * expected result for two recursive jsons formatted Stylish.
      */
     private final Path testExpectedRecursive = Paths
             .get("src/test/resources/testExpectedStylish.txt")
             .toAbsolutePath().normalize();
     /**
-     * expected result for two recursive jsons formatted plain.
+     * expected result for two recursive jsons formatted Plain.
      */
     private final Path testFormatPlain = Paths
             .get("src/test/resources/testExpectedPlainFormat.txt")
             .toAbsolutePath().normalize();
+    /**
+     * expected result for two recursive jsons formatted Json.
+     */
+    private final Path testFormatJson = Paths
+            .get("src/test/resources/testExpectedJson.txt")
+            .toAbsolutePath().normalize();
+
     DifferTest() throws IOException {
     }
+
     @Test
     public void testGeneratePlainJson() throws Exception {
         System.out.println("Test generate for plain json");
@@ -69,6 +77,7 @@ class DifferTest {
         assertEquals(expected, Differ
                 .generate(plainYml1, plainYml2, "stylish"));
     }
+
     @Test
     public void testStylishFormatter() throws Exception {
         System.out.println("Test generate for stylish format");
@@ -84,5 +93,14 @@ class DifferTest {
         assertEquals(expected, Differ
                 .generate(recursiveJson1,
                         recursiveJson2, "plain"));
+    }
+
+    @Test
+    public void testJsonFormat() throws Exception {
+        System.out.println("Test generate for json format");
+
+        String expected = Files.readString(testFormatJson);
+        assertEquals(expected, Differ
+                .generate(recursiveJson1, recursiveJson2, "json"));
     }
 }

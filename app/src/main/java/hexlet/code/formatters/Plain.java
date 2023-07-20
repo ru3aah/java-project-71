@@ -19,15 +19,15 @@ public class Plain {
         StringBuilder result = new StringBuilder();
         for (Map<String, Object> element : diffMap) {
             switch (element.get("status").toString()) {
-                case "-" -> result.append("Property ").append("'")
+                case "removed" -> result.append("Property ").append("'")
                         .append(element.get("key")).append("'").append(" was "
                                 + "removed").append("\n");
-                case "+" -> result.append("Property ").append("'")
+                case "added" -> result.append("Property ").append("'")
                         .append(element.get("key")).append("'")
                         .append(" was added with value: ")
                         .append(complexValue(element.get("newValue")))
                         .append("\n");
-                case "*" -> result.append("Property ")
+                case "updated" -> result.append("Property ")
                         .append(complexValue(element.get("key")))
                         .append(" was updated. From ")
                         .append(complexValue(element.get("oldValue")))
