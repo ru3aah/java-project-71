@@ -10,18 +10,45 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DifferTest {
+    /**
+     * plain json file1.
+     */
     private final String plainJson1 = "src/test/resources/testFile1.json";
+    /**
+     * plain json file2.
+     */
     private final String plainJson2 = "src/test/resources/testFile2.json";
+    /**
+     * plain yaml file1.
+     */
     private final String plainYml1 = "src/test/resources/testFile1.yml";
+    /**
+     * plain yaml file2.
+     */
     private final String plainYml2 = "src/test/resources/testFile2.yml";
+    /**
+     * recursive json file1.
+     */
     private final String recursiveJson1 = "src/test/resources/testFile3.json";
+    /**
+     * recursive json file2.
+     */
     private final String recursiveJson2 = "src/test/resources/testFile4.json";
+    /**
+     * expected result for two plain jsons with default format [stylish].
+     */
     private final Path testExpectedPlain = Paths
             .get("src/test/resources/testFileExpectedPlain.txt")
             .toAbsolutePath().normalize();
+    /**
+     * expected result for two recursive jsons formatted stylish.
+     */
     private final Path testExpectedRecursive = Paths
             .get("src/test/resources/testExpectedStylish.txt")
             .toAbsolutePath().normalize();
+    /**
+     * expected result for two recursive jsons formatted plain.
+     */
     private final Path testFormatPlain = Paths
             .get("src/test/resources/testExpectedPlainFormat.txt")
             .toAbsolutePath().normalize();
