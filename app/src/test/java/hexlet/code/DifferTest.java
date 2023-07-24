@@ -77,7 +77,7 @@ public class DifferTest {
     @Test
     public void testGeneratePlainJson() throws Exception {
         System.out.println("Test generate for plain json");
-        final String expected = Files.readString(testExpectedPlain);
+        String expected = Files.readString(testExpectedPlain);
         final String format = "stylish";
         Assertions.assertEquals(expected, Differ.generate(plainJson1,
                 plainJson2, format));
@@ -108,6 +108,7 @@ public class DifferTest {
         Assertions.assertEquals(expected, Differ
                 .generate(recursiveJson1, recursiveJson2, format));
     }
+
     /**
      * test.
      * @throws Exception exception
@@ -136,7 +137,10 @@ public class DifferTest {
                 .generate(recursiveJson1, recursiveJson2, format));
     }
 
+    /**
+     * test.
+     */
     @Test
-    void generate() {
+    public void generate() {
     }
 }

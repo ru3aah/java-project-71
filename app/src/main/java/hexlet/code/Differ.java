@@ -31,7 +31,7 @@ public final class Differ {
         try {
             return Formatter.format(DiffBuilder.build(fileData1, fileData2),
                     format);
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new IOException(e);
         }
     }
