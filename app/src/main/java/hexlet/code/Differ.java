@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -8,17 +9,17 @@ import java.util.Objects;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public final class Differ {
-
-    private Differ() {
-        throw new UnsupportedOperationException(
-                "This is a utility class and cannot be instantiated");
-    }
-
-    static String generate(final String filepath1,
-                           final String filepath2,
-                           final String format)
-            throws Exception {
+public class Differ {
+    /**
+     * generate differense.
+     * @param filepath1 String
+     * @param filepath2 Streing
+     * @param format String
+     * @return String
+     */
+    public static String generate(final String filepath1,
+                                  final String filepath2,
+                                  final String format) throws IOException {
         Map<String, Object> fileData1 = Parser.parser(filepath1);
         Map<String, Object> fileData2 = Parser.parser(filepath2);
         List<Map<String, Object>> resultMap = new ArrayList<>();
@@ -48,6 +49,10 @@ public final class Differ {
             }
             resultMap.add(resultElement);
         }
-        return Formatter.format(resultMap, format);
+        try {
+            return Formatter.format(resultMap, format);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

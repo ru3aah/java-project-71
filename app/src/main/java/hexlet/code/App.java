@@ -38,7 +38,7 @@ class App implements Callable<Integer> {
     private String format;
 
 
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
