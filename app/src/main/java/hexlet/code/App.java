@@ -52,7 +52,12 @@ class App implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         //System.out.println("----> FORMAT IS: " + format);
-        System.out.println(Differ.generate(filepath1, filepath2, format));
-        return 0;
+        try {
+            System.out.println(Differ.generate(filepath1, filepath2, format));
+            return 0;
+        } catch (Exception e) {
+            System.out.println("Something went wrong");
+            return 1;
+        }
     }
 }
