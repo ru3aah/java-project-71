@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -7,9 +8,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+/**
+ * test.
+ */
 
-class DifferTest {
+public class DifferTest {
     /**
      * plain json file1.
      */
@@ -59,49 +62,78 @@ class DifferTest {
             .get("src/test/resources/testExpectedJson.txt")
             .toAbsolutePath().normalize();
 
+    /**
+     * expected result for two recursive jsons formatted Json.
+     */
+
     DifferTest() throws IOException {
     }
+
+    /**
+     * test.
+     * @throws Exception exception
+     */
 
     @Test
     public void testGeneratePlainJson() throws Exception {
         System.out.println("Test generate for plain json");
-        String expected = Files.readString(testExpectedPlain);
-        assertEquals(expected, Differ.generate(plainJson1, plainJson2,
-                "stylish"));
+        final String expected = Files.readString(testExpectedPlain);
+        final String format = "stylish";
+        Assertions.assertEquals(expected, Differ.generate(plainJson1,
+                plainJson2, format));
     }
 
+    /**
+     * test.
+     * @throws Exception exception
+     */
     @Test
     public void testGeneratePlainYml() throws Exception {
         System.out.println("Test generate for plain yaml");
-        String expected = Files.readString(testExpectedPlain);
-        assertEquals(expected, Differ
-                .generate(plainYml1, plainYml2, "stylish"));
+        final String expected = Files.readString(testExpectedPlain);
+        final String format = "stylish";
+        Assertions.assertEquals(expected, Differ
+                .generate(plainYml1, plainYml2, format));
     }
 
+    /**
+     * test.
+     * @throws Exception exception
+     */
     @Test
     public void testStylishFormatter() throws Exception {
         System.out.println("Test generate for stylish format");
-        String expected = Files.readString(testExpectedRecursive);
-        assertEquals(expected, Differ
-                .generate(recursiveJson1, recursiveJson2, "stylish"));
+        final String expected = Files.readString(testExpectedRecursive);
+        final String format = "stylish";
+        Assertions.assertEquals(expected, Differ
+                .generate(recursiveJson1, recursiveJson2, format));
     }
-
+    /**
+     * test.
+     * @throws Exception exception
+     */
     @Test
     public void testPlainFormat() throws Exception {
         System.out.println("Test generate for plain format");
-        String expected = Files.readString(testFormatPlain);
-        assertEquals(expected, Differ
+        final String expected = Files.readString(testFormatPlain);
+        final String format = "plain";
+        Assertions.assertEquals(expected, Differ
                 .generate(recursiveJson1,
-                        recursiveJson2, "plain"));
+                        recursiveJson2, format));
     }
 
+    /**
+     * test.
+     * @throws Exception exception
+     */
     @Test
     public void testJsonFormat() throws Exception {
         System.out.println("Test generate for json format");
 
         String expected = Files.readString(testFormatJson);
-        assertEquals(expected, Differ
-                .generate(recursiveJson1, recursiveJson2, "json"));
+        final String format = "json";
+        Assertions.assertEquals(expected, Differ
+                .generate(recursiveJson1, recursiveJson2, format));
     }
 
     @Test
