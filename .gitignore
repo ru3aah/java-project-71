@@ -3,6 +3,10 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+file1.*
+file2.*
+file3.*
+file4.*
 
 ### IntelliJ IDEA ###
 .idea/
