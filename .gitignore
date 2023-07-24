@@ -9,6 +9,7 @@ file3.*
 file4.*
 
 ### IntelliJ IDEA ###
+
 .idea/
 .idea/modules.xml
 .idea/jarRepositories.xml
@@ -47,3 +48,4 @@ bin/
 .DS_Store
 /src/main/java/hexlet/code/Main.java
 
+/.idea/
