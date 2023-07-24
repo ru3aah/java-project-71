@@ -1,5 +1,4 @@
 plugins {
-    id 'java'
     id 'application'
     id 'checkstyle'
     id 'jacoco'
@@ -37,21 +36,21 @@ dependencies {
     
     testImplementation platform('org.junit:junit-bom:5.9.2')
     
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 
     testImplementation (
         'org.junit.jupiter:junit-jupiter:5.9.2',
         'org.slf4j:slf4j-log4j12:2.0.7',
-        'org.assertj:assertj-core:3.22.0'
+            'org.assertj:assertj-core:3.24.2'
         )
     
-    errorprone 'com.google.errorprone:error_prone_core:2.11.0'
+    errorprone 'com.google.errorprone:error_prone_core:2.18.0'
 
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.1'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.15.1'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.1'
     implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.15.2'
-    implementation 'commons-io:commons-io:2.6'
+    implementation 'commons-io:commons-io:2.11.0'
 }
 
 test {
