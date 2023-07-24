@@ -13,16 +13,16 @@ public final class Stylish {
     public static String stylish(final List<Map<String, Object>> diffMap) {
         StringBuilder result = new StringBuilder("{\n");
         for (Map<String, Object> element : diffMap) {
-            switch (element.get("status").toString()) {
+            switch (String.valueOf(element.get("status"))) {
                 case "removed" -> result.append("  - ").append(element.get(
-                        "key"))
+                                "key"))
                         .append(": ").append(element.get("oldValue")).append(
                                 "\n");
                 case "added" -> result.append("  + ").append(element.get("key"))
                         .append(": ").append(element.get("newValue")).append(
                                 "\n");
                 case "remain same" -> result.append("    ").append(element.get(
-                        "key"))
+                                "key"))
                         .append(": ").append(element.get("oldValue")).append(
                                 "\n");
                 default -> {
