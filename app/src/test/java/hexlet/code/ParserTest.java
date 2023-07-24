@@ -40,7 +40,7 @@ public class ParserTest extends Assertions {
 
     /**
      * parcer test.
-     * @throws IOException
+     * @throws IOException exceptiom
      */
 
     public ParserTest() throws IOException {
@@ -59,19 +59,19 @@ public class ParserTest extends Assertions {
 
     /**
      * fills inString.
-     * @throws IOException
+     * @throws IOException exception
      */
 
     @BeforeAll
     public void initInString() throws IOException {
         inString1 = DataSupplier.readFile(DataSupplier.getAbsolutePath(
                 "src/test/resources/testFile1.json"));
-        inString2 = DataSupplier.readFile((DataSupplier.getAbsolutePath(
-                "src/test/resources/testFile1.yml")));
-        inString3 = DataSupplier.readFile((DataSupplier.getAbsolutePath(
-                "src/test/resources/testEmpty.yml")));
-        inString4 = DataSupplier.readFile((DataSupplier.getAbsolutePath(
-                "src/test/resources/testEmpty.json")));
+        inString2 = DataSupplier.readFile(DataSupplier.getAbsolutePath(
+                "src/test/resources/testFile1.yml"));
+        inString3 = DataSupplier.readFile(DataSupplier.getAbsolutePath(
+                "src/test/resources/testEmpty.yml"));
+        inString4 = DataSupplier.readFile(DataSupplier.getAbsolutePath(
+                "src/test/resources/testEmpty.json"));
     }
 
     /**
@@ -102,7 +102,8 @@ public class ParserTest extends Assertions {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        assertEquals(expectedMap1, recievedMap1);
+        Assertions.assertEquals(expectedMap1, recievedMap1, "json parcing "
+                + "test fails");
     }
 
     /**

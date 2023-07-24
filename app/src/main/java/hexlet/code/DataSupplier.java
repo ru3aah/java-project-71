@@ -13,6 +13,7 @@ final class DataSupplier {
     }
 
     /**
+     * getAbsPath.
      * @param filePath String
      * @return Path
      */
@@ -21,7 +22,8 @@ final class DataSupplier {
     }
 
     /**
-     * @param absolutePath
+     * get.
+     * @param absolutePath Patb
      * @return String file extention
      */
     static String getDataType(final Path absolutePath) {
@@ -29,6 +31,7 @@ final class DataSupplier {
     }
 
     /**
+     * get.
      * @param absolutePath Path
      * @return String
      * @throws IOException IO
