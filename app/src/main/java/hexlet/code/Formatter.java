@@ -8,12 +8,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Chooses what formatter to use.
- */
-public class Formatter {
-    static String format(final List<Map<String, Object>> diffMap,
-                         final String formatName) throws IOException {
+class Formatter {
+    public static String format(final List<Map<String, Object>> diffMap,
+                                final String formatName) throws IOException {
         switch (formatName) {
             case "stylish":
                 return Stylish.stylish(diffMap);

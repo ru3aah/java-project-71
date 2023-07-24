@@ -4,13 +4,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import org.apache.commons.io.FilenameUtils;
-
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 
-import static java.nio.file.Files.readString;
 class Parser {
     static Map<String, Object> parser(final String filepath)
             throws IOException {
@@ -43,13 +42,13 @@ class Parser {
     static Map<String, Object> jsonToMap(final Path filepath)
             throws Exception {
         ObjectMapper map = new ObjectMapper();
-        return map.readValue(readString(filepath),
+        return map.readValue(Files.readString(filepath),
                 new TypeReference<>() { });
     }
     static Map<String, Object> yamlToMap(final Path filepath)
             throws Exception {
         ObjectMapper map = new YAMLMapper();
-        return map.readValue(readString(filepath),
+        return map.readValue(Files.readString(filepath),
                 new TypeReference<>() { });
     }
     static String getExtention(final Path filepath) {
