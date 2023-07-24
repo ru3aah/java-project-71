@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Json formatter.
  */
-public class Json {
+public final class Json {
     /**
      * formatter for Json.
      * @param diffMap incoming Map
@@ -22,4 +22,7 @@ public class Json {
         return formattedDiffMap.writerWithDefaultPrettyPrinter()
                 .writeValueAsString(diffMap);
     }
+
+    private Json() { }
+
 }

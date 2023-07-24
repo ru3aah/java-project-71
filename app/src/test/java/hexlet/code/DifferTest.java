@@ -103,4 +103,8 @@ class DifferTest {
         assertEquals(expected, Differ
                 .generate(recursiveJson1, recursiveJson2, "json"));
     }
+
+    @Test
+    void generate() {
+    }
 }

@@ -8,8 +8,7 @@ import java.util.Map;
 /**
  * plain formatter.
  */
-public class Plain {
-
+public final class Plain {
     /**
      * plain formatter.
      * @param diffMap incoming Map.
@@ -54,5 +53,8 @@ public class Plain {
             return null;
         }
         return data.toString();
+    }
+
+    private Plain() {
     }
 }

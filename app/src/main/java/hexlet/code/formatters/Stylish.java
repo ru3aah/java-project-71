@@ -3,7 +3,7 @@ package hexlet.code.formatters;
 import java.util.List;
 import java.util.Map;
 
-public class Stylish {
+public final class Stylish {
     /**
      * stylish formatter.
      *
@@ -35,5 +35,7 @@ public class Stylish {
         }
         result.append("}");
         return result.toString();
+    }
+    private Stylish() {
     }
 }

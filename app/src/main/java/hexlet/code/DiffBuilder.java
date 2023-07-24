@@ -8,10 +8,19 @@ import java.util.Objects;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class DiffBuilder {
+/**
+ * builds final diff.
+ */
+public final class DiffBuilder {
+    /**
+     * builds diff.
+     * @param fileData1 Map
+     * @param fileData2 Map
+     * @return List
+     */
     public static List<Map<String, Object>> build(
-            Map<String, Object> fileData1,
-            Map<String, Object> fileData2) {
+            final Map<String, Object> fileData1,
+            final Map<String, Object> fileData2) {
         ArrayList<Map<String, Object>> resultMap = new ArrayList<>();
         SortedSet<String> keySet = new TreeSet<>(fileData1.keySet());
         keySet.addAll(fileData2.keySet());
@@ -40,5 +49,7 @@ public class DiffBuilder {
             resultMap.add(resultElement);
         }
         return resultMap;
+    }
+    private DiffBuilder() {
     }
 }
