@@ -21,16 +21,21 @@ public final class Stylish {
                 case "added" -> result.append("  + ").append(element.get("key"))
                         .append(": ").append(element.get("newValue")).append(
                                 "\n");
-                case "remain same" -> result.append("    ").append(element.get(
+                case "unchanged" -> result.append("    ").append(element.get(
                                 "key"))
                         .append(": ").append(element.get("oldValue")).append(
                                 "\n");
-                default -> {
+                case "changed" -> {
                     result.append("  - ").append(element.get("key")).append(
                             ": ").append(element.get("oldValue")).append("\n");
                     result.append("  + ").append(element.get("key")).append(
                             ": ").append(element.get("newValue")).append("\n");
                 }
+                default -> {
+                    System.out.println("smth wrong with Plain");
+                    System.exit(1);
+                }
+
             }
         }
         result.append("}");

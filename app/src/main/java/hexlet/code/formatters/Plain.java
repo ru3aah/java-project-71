@@ -26,13 +26,18 @@ public final class Plain {
                         .append(" was added with value: ")
                         .append(complexValue(element.get("newValue")))
                         .append("\n");
-                case "updated" -> result.append("Property ")
+                case "changed" -> result.append("Property ")
                         .append(complexValue(element.get("key")))
-                        .append(" was updated. From ")
+                        .append(" was changed. From ")
                         .append(complexValue(element.get("oldValue")))
                         .append(" to ").append(complexValue(element.get(
                                 "newValue"))).append("\n");
-                default -> result.append("");
+                case "unchanged" -> result.append("");
+                default -> {
+                    System.out.println("smth wrong with plain");
+                    System.exit(1);
+
+                }
             }
         }
         return result.toString().trim();
