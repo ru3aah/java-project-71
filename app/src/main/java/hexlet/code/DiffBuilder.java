@@ -40,11 +40,11 @@ public final class DiffBuilder {
                 resultElement.put("key", key);
                 resultElement.put("oldValue", fileData1.get(key));
                 resultElement.put("newValue", fileData2.get(key));
-                resultElement.put("status", "changed");
+                resultElement.put("status", "updated");
             } else {
                 resultElement.put("key", key);
                 resultElement.put("oldValue", fileData1.get(key));
-                resultElement.put("status", "unchanged");
+                resultElement.put("status", "remain same");
             }
             resultMap.add(resultElement);
         }

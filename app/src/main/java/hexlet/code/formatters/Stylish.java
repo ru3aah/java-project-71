@@ -3,8 +3,6 @@ package hexlet.code.formatters;
 import java.util.List;
 import java.util.Map;
 
-import static java.lang.System.exit;
-
 public final class Stylish {
     /**
      * stylish formatter.
@@ -23,26 +21,21 @@ public final class Stylish {
                 case "added" -> result.append("  + ").append(element.get("key"))
                         .append(": ").append(element.get("newValue")).append(
                                 "\n");
-                case "changed" -> result.append("    ").append(element.get(
+                case "remain same" -> result.append("    ").append(element.get(
                                 "key"))
                         .append(": ").append(element.get("oldValue")).append(
                                 "\n");
-                case "unchanged" -> {
+                default -> {
                     result.append("  - ").append(element.get("key")).append(
                             ": ").append(element.get("oldValue")).append("\n");
                     result.append("  + ").append(element.get("key")).append(
                             ": ").append(element.get("newValue")).append("\n");
-                }
-                default -> {
-                    System.out.println("Somthing wrong with data");
-                    exit(1);
                 }
             }
         }
         result.append("}");
         return result.toString();
     }
-
     private Stylish() {
     }
 }
