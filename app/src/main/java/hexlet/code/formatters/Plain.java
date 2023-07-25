@@ -18,20 +18,21 @@ public final class Plain {
         StringBuilder result = new StringBuilder();
         for (Map<String, Object> element : diffMap) {
             switch (element.get("status").toString()) {
-                case "removed" -> result.append("Property ").append("'")
-                        .append(element.get("key")).append("'").append(" was "
-                                + "removed").append("\n");
-                case "added" -> result.append("Property ").append("'")
-                        .append(element.get("key")).append("'")
-                        .append(" was added with value: ")
-                        .append(complexValue(element.get("newValue")))
-                        .append("\n");
-                case "changed" -> result.append("Property ")
-                        .append(complexValue(element.get("key")))
-                        .append(" was changed. From ")
-                        .append(complexValue(element.get("oldValue")))
-                        .append(" to ").append(complexValue(element.get(
-                                "newValue"))).append("\n");
+                case "removed" -> result.append(String
+                        .format("Property '%s' was removed%n",
+                                element.get("key")));
+                case "added" -> result.append(String
+                        .format("Property '%1$s' was added with value: %2$s%n",
+                                element.get("key"),
+                                complexValue(element.get("newValue"))));
+                case "changed" -> result
+                        .append(String.format(
+                                "Property %1$s was changed. From %2$s to "
+                                        + "%3$s%n",
+                                complexValue(element.get("key")),
+                                complexValue(element.get("oldValue")),
+                                complexValue(element.get("newValue"))));
+
                 case "unchanged" -> result.append("");
                 default -> {
                     System.out.println("smth wrong with plain");
