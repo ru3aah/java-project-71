@@ -37,7 +37,6 @@ public final class Plain {
                 default -> {
                     System.out.println("smth wrong with plain");
                     System.exit(1);
-
                 }
             }
         }
@@ -55,11 +54,11 @@ public final class Plain {
             return "[complex value]";
         } else if (data instanceof String) {
             return "'" + data + "'";
-        } else if (null == data) {
-            return null;
+        } else {
+            return String.valueOf(data);
         }
-        return data.toString();
     }
+
 
     private Plain() {
     }
