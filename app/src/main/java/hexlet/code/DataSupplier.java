@@ -1,12 +1,12 @@
 package hexlet.code;
 
-import org.apache.commons.io.FilenameUtils;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
+
+import static java.nio.file.Paths.get;
+import static org.apache.commons.io.FilenameUtils.getExtension;
 
 final class DataSupplier {
 
@@ -19,16 +19,16 @@ final class DataSupplier {
      * @return Path
      */
     static Path getAbsolutePath(final String filePath) {
-        return Paths.get(filePath).toAbsolutePath().normalize();
+        return get(filePath).toAbsolutePath().normalize();
     }
 
     /**
      * get.
-     * @param absolutePath Patb
+     * @param filePath Patb
      * @return String file extention
      */
-    static String getDataType(final Path absolutePath) {
-        return FilenameUtils.getExtension(absolutePath.toFile().getName());
+    static String getDataType(final String filePath) {
+        return getExtension(get(filePath).toFile().getName());
     }
 
     /**
@@ -45,6 +45,6 @@ final class DataSupplier {
     static Map<String, Object> getData(final String filePath)
             throws IOException {
         return Parser.parceIt(Files.readString(getAbsolutePath(filePath)),
-                getDataType(getAbsolutePath(filePath)));
+                getDataType(filePath));
     }
 }
