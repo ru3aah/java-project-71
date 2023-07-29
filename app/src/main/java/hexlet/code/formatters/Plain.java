@@ -59,7 +59,6 @@ public final class Plain {
         }
     }
 
-
     private Plain() {
     }
 }

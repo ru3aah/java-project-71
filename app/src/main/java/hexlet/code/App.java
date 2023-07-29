@@ -8,10 +8,14 @@ import picocli.CommandLine.Parameters;
 import java.util.concurrent.Callable;
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "1.0",
-        description = "Compares two configuration "
-                + "files and shows a difference.",
+        description = "Compares two configuration files and shows a "
+                + "difference.",
         showDefaultValues = true)
+
 class App implements Callable<Integer> {
+    private final int SUCCESS_EXIT_CODE = 0;
+    private final int FAIL_EXIT_CODE = 1;
+
     /**
      * filepath1, filepath2 - files for matching
      * optinal format - yet've no idea what it might be.
@@ -24,8 +28,7 @@ class App implements Callable<Integer> {
      * optinal format - yet've no idea what it might be.
      */
     @Parameters (index = "1", paramLabel = "filepath2",
-            description = "path to the second file")
-    private String filepath2;
+            description = "path to the second file") private String filepath2;
     /**
      * filepath1, filepath2 - files for matching
      * optinal format - yet've no idea what it might be.
@@ -51,13 +54,14 @@ class App implements Callable<Integer> {
      */
     @Override
     public Integer call() throws Exception {
+
         //System.out.println("----> FORMAT IS: " + format);
         try {
             System.out.println(Differ.generate(filepath1, filepath2, format));
-            return 0;
+            return SUCCESS_EXIT_CODE;
         } catch (Exception e) {
             System.out.println("Something went wrong");
-            return 1;
+            return FAIL_EXIT_CODE;
         }
     }
 }
