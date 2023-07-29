@@ -8,7 +8,10 @@ import java.util.Map;
 import static java.nio.file.Paths.get;
 import static org.apache.commons.io.FilenameUtils.getExtension;
 
-final class DataSupplier {
+/**
+ * Data supplier.
+ */
+public final class DataSupplier {
 
     private DataSupplier() {
     }
@@ -18,7 +21,7 @@ final class DataSupplier {
      * @param filePath String
      * @return Path
      */
-    static Path getAbsolutePath(final String filePath) {
+    private static Path getAbsolutePath(final String filePath) {
         return get(filePath).toAbsolutePath().normalize();
     }
 
@@ -27,7 +30,7 @@ final class DataSupplier {
      * @param filePath Patb
      * @return String file extention
      */
-    static String getDataType(final String filePath) {
+    private static String getDataType(final String filePath) {
         return getExtension(get(filePath).toFile().getName());
     }
 
@@ -38,11 +41,17 @@ final class DataSupplier {
      * @throws IOException IO
      */
 
-    static String readFile(final Path absolutePath) throws IOException {
+    public static String readFile(final Path absolutePath) throws IOException {
         return Files.readString(absolutePath);
     }
 
-    static Map<String, Object> getData(final String filePath)
+    /**
+     * get.
+     * @param filePath String
+     * @return Map
+     * @throws IOException IO
+     */
+    public static Map<String, Object> getData(final String filePath)
             throws IOException {
         return Parser.parceIt(Files.readString(getAbsolutePath(filePath)),
                 getDataType(filePath));
