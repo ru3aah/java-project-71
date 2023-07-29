@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 final class DataSupplier {
 
@@ -36,7 +37,14 @@ final class DataSupplier {
      * @return String
      * @throws IOException IO
      */
+
     static String readFile(final Path absolutePath) throws IOException {
         return Files.readString(absolutePath);
+    }
+
+    static Map<String, Object> getData(final String filePath)
+            throws IOException {
+        return Parser.parceIt(Files.readString(getAbsolutePath(filePath)),
+                getDataType(getAbsolutePath(filePath)));
     }
 }
