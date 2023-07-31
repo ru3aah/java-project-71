@@ -50,7 +50,7 @@ public final class DataSupplier {
      * @return Map
      * @throws IOException IO
      */
-    public Map<String, Object> getData(final String filePath)
+    public static Map<String, Object> getData(final String filePath)
             throws IOException {
         final Parser parser = new ParserFactory()
                 .getParser(getDataType(filePath));

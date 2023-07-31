@@ -135,11 +135,4 @@ public class DifferTest {
         Assertions.assertEquals(expected, Differ
                 .generate(recursiveJson1, recursiveJson2, format));
     }
-
-    /**
-     * test.
-     */
-    @Test
-    public void generate() {
-    }
 }

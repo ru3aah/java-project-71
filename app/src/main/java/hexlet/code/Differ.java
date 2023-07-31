@@ -1,8 +1,6 @@
 package hexlet.code;
 
-import static hexlet.code.DiffBuilder.build;
-import static hexlet.code.Formatter.format;
-
+import static hexlet.code.DataSupplier.getData;
 
 public final class Differ {
     private Differ() {
@@ -19,6 +17,10 @@ public final class Differ {
                                   final String filepath2,
                                   final String format) throws Exception {
 
-        return format(build(getData(filepath1), getData(filepath2)), format);
+        return hexlet.code.Formatter
+                .format(hexlet.code.DiffBuilder
+                                .build(getData(filepath1),
+                                        getData(filepath2)),
+                        format);
     }
 }
