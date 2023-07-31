@@ -28,7 +28,7 @@ public final class Plain {
                                 complexValue(element.get("newValue"))));
                 case "changed" -> result
                         .append(String.format(
-                                "Property %1$s was changed. From %2$s to "
+                                "Property %1$s was updated. From %2$s to "
                                         + "%3$s%n",
                                 complexValue(element.get("key")),
                                 complexValue(element.get("oldValue")),

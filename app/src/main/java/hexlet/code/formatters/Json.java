@@ -23,6 +23,7 @@ public final class Json {
                 .writeValueAsString(diffMap);
     }
 
-    private Json() { }
+    private Json() {
+    }
 
 }
