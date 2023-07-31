@@ -1,6 +1,6 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -8,27 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * test.
  */
 
 public class DifferTest {
-    /**
-     * plain json file1.
-     */
-    private final String plainJson1 = "src/test/resources/testFile1.json";
-    /**
-     * plain json file2.
-     */
-    private final String plainJson2 = "src/test/resources/testFile2.json";
-    /**
-     * plain yaml file1.
-     */
-    private final String plainYml1 = "src/test/resources/testFile1.yml";
-    /**
-     * plain yaml file2.
-     */
-    private final String plainYml2 = "src/test/resources/testFile2.yml";
     /**
      * recursive json file1.
      */
@@ -38,27 +24,29 @@ public class DifferTest {
      */
     private final String recursiveJson2 = "src/test/resources/testFile4.json";
     /**
-     * expected result for two plain jsons with default format [stylish].
+     * recursive yml file1.
      */
-    private final Path testExpectedPlain = Paths
-            .get("src/test/resources/testFileExpectedPlain.txt")
-            .toAbsolutePath().normalize();
+    private final String recursiveYml1 = "src/test/resources/testFile3.yml";
+    /**
+     * recursive yml file2.
+     */
+    private final String recursiveYml2 = "src/test/resources/testFile4.yml";
     /**
      * expected result for two recursive jsons formatted Stylish.
      */
-    private final Path testExpectedRecursive = Paths
+    private final Path testExpectedStylish = Paths
             .get("src/test/resources/testExpectedStylish.txt")
             .toAbsolutePath().normalize();
     /**
      * expected result for two recursive jsons formatted Plain.
      */
-    private final Path testFormatPlain = Paths
-            .get("src/test/resources/testExpectedPlainFormat.txt")
+    private final Path testExpectedPlain = Paths
+            .get("src/test/resources/testExpectedPlain.txt")
             .toAbsolutePath().normalize();
     /**
      * expected result for two recursive jsons formatted Json.
      */
-    private final Path testFormatJson = Paths
+    private final Path testExpectedJson = Paths
             .get("src/test/resources/testExpectedJson.txt")
             .toAbsolutePath().normalize();
 
@@ -70,69 +58,86 @@ public class DifferTest {
     }
 
     /**
-     * test.
+     * test for 2 recursive json @ stylish.
      * @throws Exception exception
      */
-
     @Test
-    public void testGeneratePlainJson() throws Exception {
-        System.out.println("Test generate for plain json");
-        String expected = Files.readString(testExpectedPlain);
+    @DisplayName("Test generate() for 2 json @stylish format")
+    public void testJsonStylish() throws Exception {
         final String format = "stylish";
-        Assertions.assertEquals(expected, Differ.generate(plainJson1,
-                plainJson2, format));
+        final String expected = Files.readString(testExpectedStylish);
+        final String generated = Differ.generate(recursiveJson1,
+                recursiveJson2, format);
+        assertEquals(expected, generated);
     }
 
     /**
-     * test.
+     * test for 2 json @ plain.
      * @throws Exception exception
      */
     @Test
-    public void testGeneratePlainYml() throws Exception {
-        System.out.println("Test generate for plain yaml");
-        final String expected = Files.readString(testExpectedPlain);
-        final String format = "stylish";
-        Assertions.assertEquals(expected, Differ
-                .generate(plainYml1, plainYml2, format));
-    }
-
-    /**
-     * test.
-     * @throws Exception exception
-     */
-    @Test
-    public void testStylishFormatter() throws Exception {
-        System.out.println("Test generate for stylish format");
-        final String expected = Files.readString(testExpectedRecursive);
-        final String format = "stylish";
-        Assertions.assertEquals(expected, Differ
-                .generate(recursiveJson1, recursiveJson2, format));
-    }
-
-    /**
-     * test.
-     * @throws Exception exception
-     */
-    @Test
-    public void testPlainFormat() throws Exception {
-        System.out.println("Test generate for plain format");
-        final String expected = Files.readString(testFormatPlain);
+    @DisplayName("Test generate() for 2 json @plain format")
+    public void testJsonPlain() throws Exception {
         final String format = "plain";
-        Assertions.assertEquals(expected, Differ
-                .generate(recursiveJson1, recursiveJson2, format));
+        final String expected = Files.readString(testExpectedPlain);
+        final String generated = Differ
+                .generate(recursiveJson1, recursiveJson2, format);
+        assertEquals(expected, generated);
     }
 
     /**
-     * test.
+     * test for 2 json @ json.
      * @throws Exception exception
      */
     @Test
-    public void testJsonFormat() throws Exception {
-        System.out.println("Test generate for json format");
-
-        String expected = Files.readString(testFormatJson);
+    @DisplayName("Test generate() for 2 json @json format")
+    public void testJsonJson() throws Exception {
         final String format = "json";
-        Assertions.assertEquals(expected, Differ
-                .generate(recursiveJson1, recursiveJson2, format));
+        String expected = Files.readString(testExpectedJson);
+        String generated = Differ
+                .generate(recursiveJson1, recursiveJson2, format);
+        assertEquals(expected, generated);
+    }
+
+    /**
+     * test for 2 yml @ stylish.
+     * @throws Exception exception
+     */
+    @Test
+    @DisplayName("Test generate() for 2 yml @stylish format")
+    public void testYmlStylish() throws Exception {
+        final String format = "stylish";
+        final String expected = Files.readString(testExpectedStylish);
+        final String generated = Differ.generate(recursiveYml1, recursiveYml2,
+                format);
+        assertEquals(expected, generated);
+    }
+
+    /**
+     * test for 2 yml @ plain.
+     * @throws Exception exception
+     */
+    @Test
+    @DisplayName("Test generate() for 2 yml @plain format")
+    public void testYmlPlain() throws Exception {
+        final String format = "plain";
+        final String expected = Files.readString(testExpectedPlain);
+        final String generated = Differ
+                .generate(recursiveYml1, recursiveYml2, format);
+        assertEquals(expected, generated);
+    }
+
+    /**
+     * test for 2 yml @ json.
+     * @throws Exception exception
+     */
+    @Test
+    @DisplayName("Test generate() for 2 yml @json format")
+    public void testYmlJson() throws Exception {
+        final String format = "json";
+        String expected = Files.readString(testExpectedJson);
+        String generated = Differ
+                .generate(recursiveYml1, recursiveYml2, format);
+        assertEquals(expected, generated);
     }
 }
