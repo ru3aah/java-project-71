@@ -11,7 +11,6 @@ public class YmlParser implements Parser {
      * YML parser.
      * @param data String
      * @return Map
-     * @throws JsonProcessingException
      */
 
     @Override

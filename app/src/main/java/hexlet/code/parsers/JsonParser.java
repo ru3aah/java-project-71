@@ -9,8 +9,7 @@ public final class JsonParser implements hexlet.code.Parser {
     /**
      * JSON parser.
      * @param data String
-     * @return Map <String, Object>
-     * @throws JsonProcessingException
+     * @return Map<String, Object>
      */
     @Override
     public Map<String, Object> parceIt(final String data)
