@@ -21,7 +21,7 @@ public final class DataSupplier {
      * @param filePath String
      * @return Path
      */
-    private static Path getAbsolutePath(final String filePath) {
+    public static Path getAbsolutePath(final String filePath) {
         return get(filePath).toAbsolutePath().normalize();
     }
 

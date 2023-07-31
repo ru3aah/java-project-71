@@ -28,7 +28,7 @@ public final class Parser {
     }
 
     private static ObjectMapper getParser(final String dataType) {
-        ObjectMapper parcer  = switch (dataType) {
+        ObjectMapper parcer = switch (dataType) {
             case "json" -> new ObjectMapper();
             case "yml" -> new ObjectMapper(new YAMLFactory());
             default -> throw new IllegalStateException("Unexpected value: "
