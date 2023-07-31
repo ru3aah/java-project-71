@@ -46,7 +46,7 @@ class App implements Callable<Integer> {
             defaultValue = "stylish")
     private String format;
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         int exitCode = new picocli.CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
