@@ -46,7 +46,10 @@ class App implements Callable<Integer> {
             description = "output format: stylish, plain, json, "
                     + "no-format [default: ${DEFAULT-VALUE}]",
             defaultValue = "stylish")
-    private String format;
+    private String format = "stylish";
+
+    App() {
+    }
 
     public static void main(final String[] args) {
         int exitCode = new picocli.CommandLine(new App()).execute(args);
