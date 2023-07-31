@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 
+/**
+ * Json parser.
+ */
 public final class JsonParser implements hexlet.code.Parser {
     /**
      * JSON parser.

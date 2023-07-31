@@ -6,6 +6,9 @@ import hexlet.code.Parser;
 
 import java.util.Map;
 
+/**
+ * YmlParser.
+ */
 public class YmlParser implements Parser {
     /**
      * YML parser.
