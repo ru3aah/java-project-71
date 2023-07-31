@@ -1,6 +1,7 @@
 package hexlet.code.parsers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import hexlet.code.Parser;
 
@@ -18,7 +19,7 @@ public class YmlParser implements Parser {
 
     @Override
     public Map<String, Object> parceIt(final String data)
-            throws JsonProcessingException {
+            throws JsonProcessingException, JsonMappingException {
         return new YAMLMapper().readValue(data, Map.class);
     }
 }
