@@ -1,24 +1,21 @@
 package hexlet.code;
 
-/* import hexlet.code.parsers.JsonParser;
-import hexlet.code.parsers.YmlParser;
-
 public class ParserFactory {
+
     /**
-     * parseIt.
-     *
+     * getParser.
      * @param dataType String
-     * @param data
      * @return parcer
+     * @throws RuntimeException
      */
-/*
- public final Parser parseIt(final DataType dataType, final String data) {
-         Parser parser = switch (dataType) {
-             case json -> new JsonParser();
-             case yml -> new YmlParser();
-         };
-         return parser;
-     }
- }
-*/
+    public final Parser getParser(final String dataType) {
+        return switch (dataType) {
+            case "json" -> new hexlet.code.parsers.JsonParser();
+            case "yml" -> new hexlet.code.parsers.YmlParser();
+            default -> throw new RuntimeException("There is no suitable parser "
+                    + "for provided data type: " + dataType);
+        };
+    }
+}
+
 

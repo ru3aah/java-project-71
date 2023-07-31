@@ -119,8 +119,7 @@ public class DifferTest {
         final String expected = Files.readString(testFormatPlain);
         final String format = "plain";
         Assertions.assertEquals(expected, Differ
-                .generate(recursiveJson1,
-                        recursiveJson2, format));
+                .generate(recursiveJson1, recursiveJson2, format));
     }
 
     /**

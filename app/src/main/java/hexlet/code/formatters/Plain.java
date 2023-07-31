@@ -14,7 +14,8 @@ public final class Plain {
      * @param diffMap incoming Map.
      * @return formatted String
      */
-    public static String plain(final List<Map<String, Object>> diffMap) {
+    public static String plain(final List<Map<String, Object>> diffMap)
+            throws RuntimeException {
         StringBuilder result = new StringBuilder();
         for (Map<String, Object> element : diffMap) {
             switch (element.get("status").toString()) {
@@ -34,10 +35,8 @@ public final class Plain {
                                 complexValue(element.get("newValue"))));
 
                 case "unchanged" -> result.append("");
-                default -> {
-                    System.out.println("smth wrong with plain");
-                    System.exit(1);
-                }
+                default -> throw new RuntimeException("Unknown status "
+                        + element.get("status"));
             }
         }
         return result.toString().trim();

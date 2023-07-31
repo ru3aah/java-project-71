@@ -1,16 +1,20 @@
 package hexlet.code.parsers;
 
-/*public final class JsonParser extends Parser {
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.Map;
+
+public final class JsonParser implements hexlet.code.Parser {
     /**
      * JSON parser.
-     * @param dataString String
-     * @return Map
-     * @throws Exception e
+     * @param data String
+     * @return Map <String, Object>
+     * @throws JsonProcessingException
      */
-   /* public Map<String, Object> parser(final String dataString)
+    @Override
+    public Map<String, Object> parceIt(final String data)
             throws JsonProcessingException {
-        return new ObjectMapper().readValue(dataString, Map.class);
+        return new ObjectMapper().readValue(data, Map.class);
     }
 }
-
-    */

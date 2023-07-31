@@ -1,6 +1,6 @@
 package hexlet.code;
 
-enum DataType {
+public enum DataType {
     /**
      * JSON.
      */

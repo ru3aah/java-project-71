@@ -1,25 +1,24 @@
 package hexlet.code.parsers;
 
-/* import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import hexlet.code.Parser;
 
 import java.util.Map;
 
-public final class YmlParser extends Parser {
+public class YmlParser implements Parser {
     /**
      * YML parser.
-     * @param dataString String
+     * @param data String
      * @return Map
-     * @throws Exception e
+     * @throws JsonProcessingException
      */
-    /* public Map<String, Object> parser(final String dataString)
+
+    @Override
+    public Map<String, Object> parceIt(final String data)
             throws JsonProcessingException {
-        ObjectMapper map = new YAMLMapper();
-        final Map map1 = map.readValue(dataString, Map.class);
-        return new YAMLMapper().readValue(dataString, Map.class);
+        return new YAMLMapper().readValue(data, Map.class);
     }
 }
 
-     */
+

@@ -10,7 +10,8 @@ public final class Stylish {
      * @param diffMap incoming Map
      * @return formatted String
      */
-    public static String stylish(final List<Map<String, Object>> diffMap) {
+    public static String stylish(final List<Map<String, Object>> diffMap)
+            throws RuntimeException {
         StringBuilder result = new StringBuilder("{\n");
         for (Map<String, Object> element : diffMap) {
             switch (String.valueOf(element.get("status"))) {
@@ -31,16 +32,15 @@ public final class Stylish {
                     result.append("  + ").append(element.get("key")).append(
                             ": ").append(element.get("newValue")).append("\n");
                 }
-                default -> {
-                    System.out.println("smth wrong with Plain");
-                    System.exit(1);
-                }
+                default -> throw new RuntimeException("Unknown status "
+                        + element.get("status"));
 
             }
         }
         result.append("}");
         return result.toString();
     }
+
     private Stylish() {
     }
 }
