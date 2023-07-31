@@ -65,8 +65,8 @@ public class DifferTest {
     @DisplayName("Test generate() for 2 json @stylish format")
     public void testJsonStylish() throws Exception {
         final String format = "stylish";
-        final String expected = Files.readString(testExpectedStylish);
-        final String generated = Differ.generate(recursiveJson1,
+        String expected = Files.readString(testExpectedStylish);
+        String generated = Differ.generate(recursiveJson1,
                 recursiveJson2, format);
         assertEquals(expected, generated);
     }
@@ -79,8 +79,8 @@ public class DifferTest {
     @DisplayName("Test generate() for 2 json @plain format")
     public void testJsonPlain() throws Exception {
         final String format = "plain";
-        final String expected = Files.readString(testExpectedPlain);
-        final String generated = Differ
+        String expected = Files.readString(testExpectedPlain);
+        String generated = Differ
                 .generate(recursiveJson1, recursiveJson2, format);
         assertEquals(expected, generated);
     }
@@ -107,8 +107,8 @@ public class DifferTest {
     @DisplayName("Test generate() for 2 yml @stylish format")
     public void testYmlStylish() throws Exception {
         final String format = "stylish";
-        final String expected = Files.readString(testExpectedStylish);
-        final String generated = Differ.generate(recursiveYml1, recursiveYml2,
+        String expected = Files.readString(testExpectedStylish);
+        String generated = Differ.generate(recursiveYml1, recursiveYml2,
                 format);
         assertEquals(expected, generated);
     }
@@ -121,8 +121,8 @@ public class DifferTest {
     @DisplayName("Test generate() for 2 yml @plain format")
     public void testYmlPlain() throws Exception {
         final String format = "plain";
-        final String expected = Files.readString(testExpectedPlain);
-        final String generated = Differ
+        String expected = Files.readString(testExpectedPlain);
+        String generated = Differ
                 .generate(recursiveYml1, recursiveYml2, format);
         assertEquals(expected, generated);
     }
