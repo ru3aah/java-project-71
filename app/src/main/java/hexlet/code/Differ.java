@@ -10,6 +10,18 @@ public final class Differ {
     }
 
     /**
+     * generate.
+     * @param filepath1 filepath1
+     * @param filepath2 filepath2
+     * @return String
+     * @throws Exception Exception
+     */
+    public static String generate(final String filepath1,
+                                  final String filepath2) throws Exception {
+        return generate(filepath1, filepath2, "stylish");
+    }
+
+    /**
      * generate differense.
      * @param filepath1 String
      * @param filepath2 String
