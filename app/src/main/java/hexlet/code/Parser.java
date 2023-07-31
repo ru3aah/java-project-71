@@ -11,7 +11,8 @@ public interface Parser {
     /**
      * parse data String to Map.
      * @param data String
-     * @return Map<String, Object>
+     * @return Map
+     * @throws JsonProcessingException Exceptiom
      */
     Map<String, Object> parceIt(String data) throws JsonProcessingException;
 }

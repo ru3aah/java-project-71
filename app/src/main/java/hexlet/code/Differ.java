@@ -2,6 +2,9 @@ package hexlet.code;
 
 import static hexlet.code.DataSupplier.getData;
 
+/**
+ * class Differ.
+ */
 public final class Differ {
     private Differ() {
     }
@@ -12,10 +15,12 @@ public final class Differ {
      * @param filepath2 String
      * @param format String
      * @return String
+     * @throws Exception Exception
      */
     public static String generate(final String filepath1,
                                   final String filepath2,
-                                  final String format) throws Exception {
+                                  final String format)
+            throws Exception {
 
         return hexlet.code.Formatter
                 .format(hexlet.code.DiffBuilder

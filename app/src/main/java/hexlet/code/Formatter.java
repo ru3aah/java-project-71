@@ -7,7 +7,13 @@ import hexlet.code.formatters.Stylish;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * formatter.
+ */
 public final class Formatter {
+    /**
+     * Formatter.
+     */
     private Formatter() {
     }
 

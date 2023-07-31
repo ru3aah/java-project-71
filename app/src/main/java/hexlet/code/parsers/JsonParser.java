@@ -13,7 +13,7 @@ public final class JsonParser implements hexlet.code.Parser {
     /**
      * JSON parser.
      * @param data String
-     * @return Map<String, Object>
+     * @return Map
      */
     @Override
     public Map<String, Object> parceIt(final String data)

@@ -6,6 +6,8 @@ import picocli.CommandLine.Parameters;
 
 import java.util.concurrent.Callable;
 
+import static java.lang.System.exit;
+
 @Command(name = "gendiff",
         mixinStandardHelpOptions = true, version = "1.0",
         description = "Compares 2 configuration files and shows a difference.",
@@ -48,7 +50,7 @@ class App implements Callable<Integer> {
 
     public static void main(final String[] args) {
         int exitCode = new picocli.CommandLine(new App()).execute(args);
-        System.exit(exitCode);
+        exit(exitCode);
     }
 
     /**

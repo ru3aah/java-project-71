@@ -3,6 +3,9 @@ package hexlet.code.formatters;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Stylish formatter.
+ */
 public final class Stylish {
     /**
      * stylish formatter.
