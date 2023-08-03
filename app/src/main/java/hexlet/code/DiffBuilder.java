@@ -21,7 +21,7 @@ public final class DiffBuilder {
     public static List<Map<String, Object>> build(
             final Map<String, Object> fileData1,
             final Map<String, Object> fileData2) {
-        ArrayList<Map<String, Object>> resultMap = new ArrayList<>();
+        List<Map<String, Object>> resultMap = new ArrayList<>();
         SortedSet<String> keySet = new TreeSet<>(fileData1.keySet());
         keySet.addAll(fileData2.keySet());
         for (String key : keySet) {
