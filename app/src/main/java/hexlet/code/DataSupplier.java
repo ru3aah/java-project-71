@@ -52,8 +52,7 @@ public final class DataSupplier {
      */
     public static Map<String, Object> getData(final String filePath)
             throws IOException {
-        final Parser parser = new ParserFactory()
-                .getParser(getDataType(filePath));
+        final Parser parser = ParserFactory.getParser(getDataType(filePath));
         return parser.parce(readFile(getAbsolutePath(filePath)));
     }
 }
