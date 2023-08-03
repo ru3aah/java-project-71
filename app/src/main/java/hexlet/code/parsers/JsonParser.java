@@ -16,7 +16,7 @@ public final class JsonParser implements hexlet.code.Parser {
      * @return Map
      */
     @Override
-    public Map<String, Object> parceIt(final String data)
+    public Map<String, Object> parce(final String data)
             throws JsonProcessingException, JsonMappingException {
         return new ObjectMapper().readValue(data, Map.class);
     }

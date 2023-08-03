@@ -18,7 +18,7 @@ public class YmlParser implements Parser {
      */
 
     @Override
-    public Map<String, Object> parceIt(final String data)
+    public Map<String, Object> parce(final String data)
             throws JsonProcessingException, JsonMappingException {
         return new YAMLMapper().readValue(data, Map.class);
     }

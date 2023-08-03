@@ -54,6 +54,6 @@ public final class DataSupplier {
             throws IOException {
         final Parser parser = new ParserFactory()
                 .getParser(getDataType(filePath));
-        return parser.parceIt(readFile(getAbsolutePath(filePath)));
+        return parser.parce(readFile(getAbsolutePath(filePath)));
     }
 }
