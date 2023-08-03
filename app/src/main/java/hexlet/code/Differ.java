@@ -5,7 +5,7 @@ import java.util.Map;
 
 import static hexlet.code.DataSupplier.getData;
 import static hexlet.code.DiffBuilder.build;
-import static hexlet.code.Formatter.format;
+import static hexlet.code.formatters.Formatter.format;
 
 /**
  * class Differ.

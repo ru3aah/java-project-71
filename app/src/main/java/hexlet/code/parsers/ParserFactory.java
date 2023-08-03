@@ -1,7 +1,4 @@
-package hexlet.code;
-
-import hexlet.code.parsers.JsonParser;
-import hexlet.code.parsers.YmlParser;
+package hexlet.code.parsers;
 
 /**
  * ParserFactory.

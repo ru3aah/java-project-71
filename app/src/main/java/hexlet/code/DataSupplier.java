@@ -1,9 +1,15 @@
 package hexlet.code;
 
+import hexlet.code.parsers.Parser;
+
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
+
+import static hexlet.code.parsers.ParserFactory.getParser;
+import static java.nio.file.Files.readString;
+import static java.nio.file.Paths.get;
+import static org.apache.commons.io.FilenameUtils.getExtension;
 
 /**
  * Data supplier.
@@ -19,7 +25,7 @@ public final class DataSupplier {
      * @return Path
      */
     public static Path getAbsolutePath(final String filePath) {
-        return java.nio.file.Paths.get(filePath).toAbsolutePath().normalize();
+        return get(filePath).toAbsolutePath().normalize();
     }
 
     /**
@@ -28,9 +34,7 @@ public final class DataSupplier {
      * @return String file extention
      */
     private static String getDataType(final String filePath) {
-        return org.apache.commons.io.FilenameUtils
-                .getExtension(java.nio.file.Paths
-                        .get(filePath).toFile().getName());
+        return getExtension(get(filePath).toFile().getName());
     }
 
     /**
@@ -41,7 +45,7 @@ public final class DataSupplier {
      */
 
     public static String readFile(final Path absolutePath) throws IOException {
-        return Files.readString(absolutePath);
+        return readString(absolutePath);
     }
 
     /**
@@ -52,7 +56,7 @@ public final class DataSupplier {
      */
     public static Map<String, Object> getData(final String filePath)
             throws IOException {
-        final Parser parser = ParserFactory.getParser(getDataType(filePath));
+        final Parser parser = getParser(getDataType(filePath));
         return parser.parce(readFile(getAbsolutePath(filePath)));
     }
 }
