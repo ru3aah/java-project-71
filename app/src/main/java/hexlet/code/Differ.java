@@ -1,6 +1,11 @@
 package hexlet.code;
 
+import java.util.List;
+import java.util.Map;
+
 import static hexlet.code.DataSupplier.getData;
+import static hexlet.code.DiffBuilder.build;
+import static hexlet.code.Formatter.format;
 
 /**
  * class Differ.
@@ -33,11 +38,9 @@ public final class Differ {
                                   final String filepath2,
                                   final String format)
             throws Exception {
-
-        return hexlet.code.Formatter
-                .format(hexlet.code.DiffBuilder
-                                .build(getData(filepath1),
-                                        getData(filepath2)),
-                        format);
+        Map<String, Object> data1 = getData(filepath1);
+        Map<String, Object> data2 = getData(filepath2);
+        final List<Map<String, Object>> diff = build(data1, data2);
+        return format(diff, format);
     }
 }
