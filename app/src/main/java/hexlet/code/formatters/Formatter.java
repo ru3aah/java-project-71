@@ -1,9 +1,5 @@
 package hexlet.code.formatters;
 
-import hexlet.code.formatters.Json;
-import hexlet.code.formatters.Plain;
-import hexlet.code.formatters.Stylish;
-
 import java.util.List;
 import java.util.Map;
 
@@ -34,8 +30,7 @@ public final class Formatter {
             case "json":
                 return Json.json(diffMap);
             default:
-                System.out.println("Weird format has been requested.");
-                throw new Exception();
+                throw new Exception("Weird format has been requested.");
         }
     }
 }
