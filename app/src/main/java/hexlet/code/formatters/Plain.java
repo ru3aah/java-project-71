@@ -16,7 +16,7 @@ public final class Plain {
             throws RuntimeException {
         StringBuilder result = new StringBuilder();
         for (Map<String, Object> element : diffMap) {
-            switch (element.get("status").toString()) {
+            switch (String.valueOf(element.get("status"))) {
                 case "removed" -> result.append(String
                         .format("Property '%s' was removed%n",
                                 element.get("key")));
