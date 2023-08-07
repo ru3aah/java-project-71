@@ -15,10 +15,6 @@ import static org.apache.commons.io.FilenameUtils.getExtension;
  * Data supplier.
  */
 public final class DataSupplier {
-
-    private DataSupplier() {
-    }
-
     /**
      * getAbsPath.
      * @param filePath String

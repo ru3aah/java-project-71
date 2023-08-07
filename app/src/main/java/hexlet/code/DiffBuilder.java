@@ -50,7 +50,4 @@ public final class DiffBuilder {
         }
         return resultMap;
     }
-
-    private DiffBuilder() {
-    }
 }

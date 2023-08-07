@@ -11,9 +11,6 @@ import static hexlet.code.formatters.Formatter.format;
  * class Differ.
  */
 public final class Differ {
-    private Differ() {
-    }
-
     /**
      * generate.
      * @param filepath1 filepath1
