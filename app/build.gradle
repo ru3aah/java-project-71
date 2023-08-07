@@ -15,10 +15,12 @@ repositories {
     mavenCentral()
 }
 
-compileJava {
+/* compileJava {
     options.release = 20
     options.compilerArgs += ["-Aproject=${project.group}/${project.name}"]
 }
+
+ */
 
 dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
