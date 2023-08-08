@@ -7,11 +7,6 @@ import java.util.Map;
  * formatter.
  */
 public final class Formatter {
-    /**
-     * Formatter.
-     */
-    private Formatter() {
-    }
 
     /**
      * format.

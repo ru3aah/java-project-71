@@ -54,7 +54,4 @@ public final class Plain {
             return String.valueOf(data);
         }
     }
-
-    private Plain() {
-    }
 }

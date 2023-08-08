@@ -22,8 +22,4 @@ public final class Json {
         return formattedDiffMap.writerWithDefaultPrettyPrinter()
                 .writeValueAsString(diffMap);
     }
-
-    private Json() {
-    }
-
 }

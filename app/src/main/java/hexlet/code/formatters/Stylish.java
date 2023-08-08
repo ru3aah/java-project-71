@@ -43,7 +43,4 @@ public final class Stylish {
         result.append("}");
         return result.toString();
     }
-
-    private Stylish() {
-    }
 }
